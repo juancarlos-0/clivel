@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Indice</title>
+        <link rel="stylesheet" href="estilos/index.css"/>
+        <link rel="stylesheet" href="bootstrap5/css/bootstrap.min.css"/>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    CLIVEL
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="amigos.jsp">Amigos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="comunidades.jsp">Comunidad</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Juegos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Noticias</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="contenedorBienvenida">
+            <h1 class="textoBienvenida">Bienvenido/a a Clivel</h1>
+            <p class="texto2Bienvenida">La red social para los amantes de los videojuegos</p>
+            <div>
+                <button class="boton1" onclick="
+                        window.location.href = 'login.jsp';
+                        ">Iniciar sesión</button>
+                <button class="boton2" onclick="
+                        window.location.href = 'registro.jsp';
+                        ">Registrarse</button>
+            </div>            
+        </div>
+
+        <section class="acerca-de">
+            <h2>¿Qué es Clivel?</h2>
+            <p>Clivel es una red social creada para los amantes de los videojuegos. 
+                Aquí podrás conectarte con otros jugadores, descubrir nuevos juegos y 
+                participar en la comunidad de jugadores. También podrás valorar los videojuegos
+                y descubrir las nuevas noticias de la actualidad del mundo de los 
+                videojuegos.
+            </p>
+            <img src="img/samurai.png" class="samurai">
+            <p class="texto-mini">"El lugar ideal para conocer más sobre videojuegos"</p>
+        </section>
+
+        <section class="comunidad py-5">
+            <h2 style="font-size: 80px">Lo que encontrarás</h2>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 order-md-2">
+                        <div class="img-comunidad">
+                            <img src="img/mujer-en-parada-autobus.png" alt="Sección de comunidad" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                        <div class="comunidad-texto">
+                            <h2>Comunidades</h2>
+                            <p>En nuestra sección de comunidad, podrás compartir tus experiencias, hacer nuevos amigos y discutir tus juegos favoritos.</p>
+                            <a href="#" class="btn btn-primary">Ir a comunidades</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 order-md-2">
+                        <div class="img-comunidad">
+                            <img src="img/imagen-arcoiris.png" alt="Sección de comunidad" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                        <div class="comunidad-texto">
+                            <h2>Amigos</h2>
+                            <p>En Clivel también hay una sección en la que podrás 
+                                agregar a todos tus amigos y podrás hablar con ellos 
+                                mediante un chat.</p>
+                            <a href="#" class="btn btn-primary">Ir a los amigos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 order-md-2">
+                        <div class="img-comunidad">
+                            <img src="img/dos-espadas.png" alt="Sección de comunidad" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                        <div class="comunidad-texto">
+                            <h2>Juegos</h2>
+                            <p>Podrás ver todos los juegos y una descripción de ellos,
+                             además podrás dar una valoración y ver la de los demas usuarios. Si superas
+                            las 20 valoraciones se te concedera el rango de experto.</p>
+                            <a href="#" class="btn btn-primary">Ver los juegos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 order-md-2">
+                        <div class="img-comunidad">
+                            <img src="img/arcoiris-animales.png" alt="Sección de comunidad" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                        <div class="comunidad-texto">
+                            <h2>Noticias</h2>
+                            <p>Podrás encontrar todas las noticias de la actualidad del
+                            mundo de los videojuegos para estar siempre imformado/a.</p>
+                            <a href="#" class="btn btn-primary">Ver las noticias</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p><a href="#">Preguntas frecuentes</a> | <a href="#">Términos y condiciones</a> | <a href="#">Contáctanos</a></p>
+            <p>© 2023 Clivel - Todos los derechos reservados</p>
+        </footer>
+
+
+
+
+
+        <script src="bootstrap5/js/bootstrap.bundle.min.js"></script>
+    </body>
+
+</html>

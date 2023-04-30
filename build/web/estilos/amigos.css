@@ -1,0 +1,342 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 30 abr 2023, 22:48:02
+    Author     : Juancarlos
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+@import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&display=swap);
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Roboto+Slab&display=swap");
+
+/* Estilos del pie de página */
+footer {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 50px;
+}
+
+footer p {
+  margin-bottom: 10px;
+}
+
+footer a {
+  color: #1f1f1f;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Margen que separa todo del navbar */
+main {
+  margin-top: 5px;
+}
+/* Estilo del contenedor del chat */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: "Open Sans", "Helvetica Neue", "Verdana";
+}
+
+/* Estilo de los mensajes */
+.message {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+/* Mensaje de la izquierda */
+.left-message {
+  background-color: #eee;
+  align-self: flex-start;
+}
+
+/* Mensaje de la derecha */
+.right-message {
+  background-color: #007bff;
+  color: #fff;
+  align-self: flex-end;
+}
+
+
+.buscarAmigos {
+  margin-top: 100px;
+}
+
+/* Estilo de la lista de amigos */
+.list-group {
+  max-height: 400px;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+}
+
+/* Estilo del contenedor del chat */
+.chat-container {
+  max-height: 400px;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+}
+
+/* Estilo del body */
+body {
+  background-color: #f8f8f8;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+}
+/* Estilo de los títulos */
+h2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* Columna de amigos */
+.friends-column {
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.friends-column h2 {
+  color: #2d2d2d;
+}
+
+/* Lista de amigos sin estilo de lista */
+.friends-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.friend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.friend .name {
+  font-weight: 500;
+  color: #2d2d2d;
+}
+
+.friend .status {
+  font-weight: 500;
+  font-size: 12px;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 50px;
+  text-transform: uppercase;
+}
+
+.friend .status-online {
+  background-color: #4caf50;
+}
+
+.friend .status-away {
+  background-color: #ff9800;
+}
+
+.friend .status-offline {
+  background-color: #f44336;
+}
+
+.friends-column form {
+  margin-top: 20px;
+}
+
+.friends-column form label {
+  display: block;
+  font-weight: 500;
+  color: #2d2d2d;
+  margin-bottom: 10px;
+}
+
+.friends-column form input[type="text"] {
+  width: 100%;
+  border: none;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.friends-column form button[type="submit"] {
+  display: block;
+  width: 100%;
+  background-color: #5c6bc0;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.friends-column form button[type="submit"]:hover {
+  background-color: #3949ab;
+}
+
+/* Estilos para la barra de navegación */
+nav {
+  background-color: #0088cc;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para la lista de amigos */
+.list-group-item {
+  cursor: pointer;
+}
+
+.list-group-item:hover {
+  background-color: #f1f1f1;
+}
+
+/* Estilos para los badges de estado de los amigos */
+.badge {
+  font-size: 0.8rem;
+  margin-left: 5px;
+  padding: 5px;
+}
+
+.badge.bg-primary {
+  background-color: #007bff;
+}
+
+.badge.bg-secondary {
+  background-color: #6c757d;
+}
+
+.badge.bg-success {
+  background-color: #28a745;
+}
+
+.badge.bg-warning {
+  background-color: #ffc107;
+}
+
+/* Estilos para el formulario de agregar amigo */
+.form-label {
+  font-weight: bold;
+}
+
+.form-control:focus {
+  border-color: #0088cc;
+  box-shadow: none;
+}
+
+/* Estilos para el chat */
+.chat-container {
+  height: 500px;
+  overflow-y: scroll;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.message {
+  display: flex;
+  margin: 10px 0;
+}
+
+.left-message {
+  justify-content: flex-start;
+}
+
+.left-message p {
+  background-color: #f1f0f0;
+  color: #333;
+  padding: 3px;
+  border-radius: 10px;
+  max-width: 100%;
+}
+
+.right-message {
+  justify-content: flex-end;
+}
+
+.right-message p {
+  color: white;
+  padding: 3px;
+  border-radius: 10px;
+  max-width: 100%;
+  align-self: flex-end;
+}
+
+/* Estilos para el formulario */
+.form-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border-top: 1px solid #ddd;
+}
+
+.form-container input[type="text"] {
+  flex: 1;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 20px;
+  background-color: #fff;
+  margin-right: 10px;
+}
+
+.form-container button {
+  background-color: #0088cc;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+/* Estilo imagen de la lista amigos */
+.list-group-item img {
+  border: 1px solid #ddd;
+}
+
+.list-group-item span {
+  margin-left: auto;
+}
+
+/* Estilo del footer */
+
+/* footer {
+  background-color: black;
+  color: white;
+  padding: 40px;
+  margin-top: 20px;
+} */
