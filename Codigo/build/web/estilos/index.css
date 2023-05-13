@@ -1,0 +1,244 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 23 abr 2023, 16:00:30
+    Author     : Juancarlos
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Open+Sans:wght@300&display=swap');
+
+/** Aplicar estilo de letra a la página **/
+
+body {
+    font-family: "Abril Fatface";
+}
+
+/** Sección de bienvenida **/
+
+.contenedorBienvenida {
+    background-image: url("../img/mundo-de-fantasia.png");
+    height: 600px;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.contenedorBienvenida h1 {
+    font-size: 3em;
+    text-align: center;
+}
+
+.contenedorBienvenida p {
+    font-size: 2em;
+    text-align: center;
+}
+
+/** Sección acerca-de **/
+
+.acerca-de {
+  background-color: #f5f5f5;
+  padding: 50px;
+}
+
+.acerca-de h2 {
+  font-size: 5em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.acerca-de p {
+  margin-top: 60px;
+  font-size: 24px;
+  line-height: 1.5;
+  color: #333;
+  text-align: center;
+}
+
+.acerca-de .samurai {
+  width: 300px;
+  height: 300px;
+  display: block;
+  margin: 60px auto;
+  border-radius: 12px;
+}
+
+.acerca-de .texto-mini {
+    font-size: 16px;
+}
+
+/** Sección de cartas (lo que habrá en la página) **/
+
+/** Sección de la comunidad **/
+
+.comunidad {
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.img-comunidad {
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0px 0px 25px rgba(0,0,0,0.1);
+    display: inline-block;
+    overflow: hidden;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    position: relative;
+}
+
+.img-comunidad img {
+    width: 100%;
+    height: auto;
+}
+
+.comunidad-texto {
+    text-align: left;
+    color: #3f3f3f;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.comunidad-texto h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #212529;
+}
+
+.comunidad-texto a.btn-primary {
+    background-color: #f03c3c;
+    border-color: #f03c3c;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 50px;
+    padding: 10px 30px;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.comunidad-texto a.btn-primary:hover {
+    background-color: #e03131;
+    border-color: #e03131;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* Estilos del pie de página */
+footer {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 50px;
+}
+
+footer p {
+  margin-bottom: 10px;
+}
+
+footer a {
+  color: #1f1f1f;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos de los botones */
+
+.boton1 {
+  border: 2px solid white;
+  border-radius: 20px;
+  color: white;
+  background-color: transparent;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.boton1:hover {
+  background-color: white;
+  color: black;
+}
+
+.boton1:focus {
+  outline: none;
+}
+
+.boton1:active {
+  background-color: darkred;
+}
+
+.boton1::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.boton1:hover {
+  transform: scaleX(1.1);
+}
+
+.boton2 {
+  border: 2px solid white;
+  border-radius: 20px;
+  color: white;
+  background-color: transparent;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.boton2:hover {
+  background-color: white;
+  color: black;
+}
+
+.boton2:focus {
+  outline: none;
+}
+
+.boton2:active {
+  background-color: white;
+}
+
+.boton2::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.boton2:hover {
+  transform: scale(1.1);
+}
+
+
+
+@media screen and (max-width: 768px) {
+
+  p {
+    font-size: 1em;
+  }
+}

@@ -1,0 +1,41 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 26 abr 2023, 19:13:36
+    Author     : Juancarlos
+*/
+
+/* Estilo modificación usuario */
+
+.modificacion {
+    margin-top: 60px;
+}
+
+/* Estilo imagen a modificar */
+
+.card img {
+    height: 200px;
+    object-fit: contain;
+}
+
+/* Estilos del pie de página */
+footer {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 50px;
+}
+
+footer p {
+  margin-bottom: 10px;
+}
+
+footer a {
+  color: #1f1f1f;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}

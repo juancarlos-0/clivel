@@ -1,0 +1,125 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 11 may 2023, 23:55:24
+    Author     : Juancarlos
+*/
+
+
+/* Estilos del pie de página */
+footer {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+footer a {
+    color: #1f1f1f;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo de la lista de amigos */
+.chat-friends {
+  height: 400px;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+}
+/*Eliminar scroll*/
+
+.chat-friends::-webkit-scrollbar {
+ display: none;
+}
+.chat-friends:hover::-webkit-scrollbar {
+ display: none;
+}
+.chat-friends::-webkit-scrollbar-thumb {
+background-color: #09C;
+}
+
+.chat-box .card-body::-webkit-scrollbar {
+ display: none;
+}
+.chat-box .card-body:hover::-webkit-scrollbar {
+ display: none;
+}
+.chat-box .card-body::-webkit-scrollbar-thumb {
+background-color: #09C;
+}
+
+/* Estilo del contenedor del chat */
+.chat-box {
+  border: 1px solid #ccc;
+  margin-top: 46.5px;
+  height: 400px;
+}
+
+.chat-box .card-body {
+    overflow-y: scroll;
+}
+.container {
+    margin-top: 10px;
+}
+
+/* Estilo de los mensajes*/
+
+.bocadillo {
+  max-width: 70%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.bocadillo-izquierda {
+  background-color: #dcf8c6;
+  margin-right: auto;
+}
+
+.bocadillo-derecha {
+  background-color: #e4e4e4;
+  margin-left: auto;
+}
+/* Estilo del desplegable de recomendaciones */
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: #f1f1f1;
+  width: 94%;
+  max-height: 115px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+}
+
+.dropdown-menu li {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #ddd;
+}
+
+/* Estilo del mensaje de error de agregar y eliminar amigos */
+
+.estiloMensajeError {
+    color: red;
+    font-size: 10px;
+}
+
+/* Estilo lista amigos */
+
+#listaUsuarios:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
