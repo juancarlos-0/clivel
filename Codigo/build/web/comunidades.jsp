@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="bootstrap5/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
         <link rel="stylesheet" href="estilos/comunidades.css"/>
         <title>Comunidades</title>
     </head>
@@ -18,29 +19,48 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a href="perfil.jsp">
-                    <img src="${sessionScope.datosUsuario.getFoto() 
-                                != null ? sessionScope.datosUsuario.getFoto() 
-                                : 'img/usuario.png'}" 
-                         alt="Imagen de perfil" width="50px" 
-                         height="46px" class="rounded-circle"/>
-                </a>
+                <c:if test="${not empty sessionScope.datosUsuario}">
+                        <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="${sessionScope.datosUsuario.getFoto() != null ? sessionScope.datosUsuario.getFoto() : 'img/usuario.png'}" alt="Imagen de perfil" width="50px" height="46px" class="rounded-circle"/>
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item dropdown-item-icon" href="perfil.jsp">Editar usuario<i class="bi bi-person-circle"></i></a></li>
+                        <li><a class="dropdown-item dropdown-item-icon" href="Cerrar_sesion">Cerrar sesión<i class="bi bi-box-arrow-right"></i></a></li>
+                    </ul>
+
+                </div>
+                    </c:if>   
+                    <c:if test="${empty sessionScope.datosUsuario}">
+                        <a class="navbar-brand" href="#">
+                            CLIVEL
+                        </a>
+                    </c:if>
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link" aria-current="page" href="index.jsp">Home</a>
+                        </li>
+                        <c:if test="${not empty sessionScope.datosUsuario}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="Preparar_amigos">Amigos</a>
+                            </li>
+                        </c:if>
+                        <c:if test="${empty sessionScope.datosUsuario}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="amigos.jsp">Amigos</a>
+                            </li>
+                        </c:if>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="comunidades.jsp">Comunidad</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="amigos.jsp">Amigos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="comunidades.jsp">Comunidad</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Juegos</a>
+                            <a class="nav-link" href="juegos.jsp">Juegos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Noticias</a>

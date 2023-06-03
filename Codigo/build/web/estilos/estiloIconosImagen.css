@@ -1,0 +1,39 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 16 may 2023, 14:22:36
+    Author     : Juancarlos
+*/
+
+/* Quitar estilo al dropdown */
+.dropdown-toggle::after {
+    display: none;
+}
+
+/* Estilo de los iconos de la imagen */
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dropdown-item-icon {
+    display: flex;
+    align-items: center;
+    transition: all 0.25s ease;
+}
+
+.dropdown-item-icon i {
+    margin-left: 5px;
+}
+
+.dropdown-item-icon:hover,
+.dropdown-item-icon:hover i {
+    font-size: 1.05em;
+}
+
+.dropdown-item-icon:hover i {
+    transform: scale(1.05);
+}

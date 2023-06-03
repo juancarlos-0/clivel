@@ -20,32 +20,43 @@
     </head>
     <body>
         <c:choose>
-            <c:when test="${not empty sessionScope.datosUsuario}">
+            <c:when test="${not empty sessionScope.datosUsuario}">            
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
-                        <a href="perfil.jsp">
-                            <img src="${sessionScope.datosUsuario.getFoto() 
-                                        != null ? sessionScope.datosUsuario.getFoto() 
-                                        : 'img/usuario.png'}" 
-                                 alt="Imagen de perfil" width="50px" 
-                                 height="46px" class="rounded-circle"/>
-                        </a>
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="${sessionScope.datosUsuario.getFoto() != null ? sessionScope.datosUsuario.getFoto() : 'img/usuario.png'}" alt="Imagen de perfil" width="50px" height="46px" class="rounded-circle"/>
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item dropdown-item-icon" href="perfil.jsp">Editar usuario<i class="bi bi-person-circle"></i></a></li>
+                                <li><a class="dropdown-item dropdown-item-icon" href="Cerrar_sesion">Cerrar sesión<i class="bi bi-box-arrow-right"></i></a></li>
+                            </ul>
+                        </div>
+
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                    <a class="nav-link" aria-current="page" href="index.jsp">Home</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="amigos.jsp">Amigos</a>
-                                </li>
+                                <c:if test="${not empty sessionScope.datosUsuario}">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Preparar_amigos">Amigos</a>
+                                    </li>
+                                </c:if>
+                                <c:if test="${empty sessionScope.datosUsuario}">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="amigos.jsp">Amigos</a>
+                                    </li>
+                                </c:if>
                                 <li class="nav-item">
                                     <a class="nav-link" href="comunidades.jsp">Comunidad</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Juegos</a>
+                                    <a class="nav-link" href="juegos.jsp">Juegos</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Noticias</a>
@@ -85,7 +96,7 @@
                                                 hideClass: {
                                                     popup: 'animate__animated animate__fadeOutUp'
                                                 }
-                                            })
+                                            });
                                         </script>
 
                                     </c:if>
@@ -207,21 +218,33 @@
                                                 <button type="submit" class="list-group-item list-group-item-action border-0 bg-transparent p-0" name="botonIrAChat">
                                                     <input type="text" style="display: none" value="${usuario.getUsuario()}" name="nombre_usuario_chat">
                                                     <li class="list-group-item d-flex justify-content-between align-items-center" id="listaUsuarios"
-                                                        style="
-                                                        <c:if test='${not empty usuario_chat}'>
+                                                        style="<c:if test='${not empty usuario_chat}'>
                                                             <c:if test='${usuario_chat.getUsuario() == usuario.getUsuario()}'>
                                                                 background-color: #98FB98;
                                                                 border: 1px solid black;
-                                                            </c:if>'>
-
-                                                        </c:if>">
+                                                            </c:if>
+                                                        </c:if>
+                                                        ">
                                                         <div class="d-flex align-items-center">
-                                                            <img src="${sessionScope.datosUsuario.getFoto() 
-                                                                        != null ? sessionScope.datosUsuario.getFoto() 
-                                                                        : 'img/usuario.png'}"  
-                                                                 alt="imagen de usuario" 
-                                                                 class="rounded-circle me-2" width="30"
-                                                                 height="30">
+                                                            <div id="contenedorImgUsuario">
+                                                                <img src="${usuario.getFoto() != null ? usuario.getFoto() : 'img/usuario.png'}"  
+                                                                     alt="imagen de usuario" 
+                                                                     class="rounded-circle me-2 tooltipUsuario" width="30"
+                                                                     height="30">
+                                                                <div class="tooltip">
+                                                                    <div class="tooltip-header">
+                                                                        <img src="${usuario.getFoto() != null ? usuario.getFoto() : 'img/usuario.png'}" 
+                                                                             alt="imagen de usuario" 
+                                                                             class="rounded-circle me-2" width="50"
+                                                                             height="50">
+                                                                    </div>
+                                                                    <div class="tooltip-content">
+                                                                        <p><strong>Nombre:</strong> ${usuario.getNombre()}</p>
+                                                                        <p><strong>Apellidos:</strong> ${usuario.getApellidos()}</p>
+                                                                        <p><strong>Descripcion: </strong>${usuario.getDescripcion()}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                             <span>${usuario.getUsuario()}</span>
                                                         </div>
                                                     </li>
@@ -232,6 +255,7 @@
                                 </c:choose>
                             </div>
                         </div>
+
                         <div class="col-md-8">
                             <div class="card chat-box">
                                 <div class="card-header d-flex justify-content-between align-items-center">
@@ -265,8 +289,8 @@
                                             </c:if>
                                             <c:if test="${not empty usuario_chat}">
                                                 <input type="text" class="form-control" placeholder="Escribe un mensaje..."
-                                                       name="chat-input">
-                                                <button class="btn btn-outline-primary" type="submit" name="enviar_mensaje">
+                                                       name="chat-input" id="inputEnvioMensaje">
+                                                <button class="btn btn-outline-primary" type="submit" name="enviar_mensaje" id="flechaEnvioMensaje">
                                                     <i class="bi bi-arrow-right"></i>
                                                 </button>
                                             </c:if>
@@ -286,18 +310,55 @@
                     <p>© 2023 Clivel - Todos los derechos reservados</p>
                 </footer>
 
-                <c:if test="${not empty usuario_chat}">
-                    <script src="script/chat.js">
-                    </c:if>
-
                 <script src="script/amigos.js"></script>
-                <script src="bootstrap5/js/bootstrap.bundle.min.js"></script>
+
+                <c:if test="${not empty usuario_chat}">
+                    <script src="script/chat.js"></script>
+                </c:if>
 
             </c:when>
+
             <c:otherwise>
-                alskfjlkasf
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">
+                            CLIVEL
+                        </a>
+
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="index.jsp">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="amigos.jsp">Amigos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="comunidades.jsp">Comunidad</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="juegos.jsp">Juegos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Noticias</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="container text-center">
+                    <img src="img/pato.png" alt="imagen" class="img-fluid" id="imagenNoSesion">
+                    <p class="mt-4">Regístrate para comenzar un chat o inicia sesión si ya tienes una cuenta</p>
+                    <a href="registro.jsp" class="btn btn-primary">Registrarse</a>
+                    <a href="login.jsp" class="btn btn-secondary">Iniciar sesión</a>
+                </div>
             </c:otherwise>
         </c:choose>
-
+        <link rel ="stylesheet" href ="estilos/estiloIconosImagen.css"/>
+        <script src="bootstrap5/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

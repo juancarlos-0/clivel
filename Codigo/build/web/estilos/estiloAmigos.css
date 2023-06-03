@@ -30,37 +30,37 @@ footer a:hover {
 
 /* Estilo de la lista de amigos */
 .chat-friends {
-  height: 400px;
-  overflow-y: scroll;
-  border: 1px solid #ccc;
+    height: 400px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
 }
 /*Eliminar scroll*/
 
 .chat-friends::-webkit-scrollbar {
- display: none;
+    display: none;
 }
 .chat-friends:hover::-webkit-scrollbar {
- display: none;
+    display: none;
 }
 .chat-friends::-webkit-scrollbar-thumb {
-background-color: #09C;
+    background-color: #09C;
 }
 
 .chat-box .card-body::-webkit-scrollbar {
- display: none;
+    display: none;
 }
 .chat-box .card-body:hover::-webkit-scrollbar {
- display: none;
+    display: none;
 }
 .chat-box .card-body::-webkit-scrollbar-thumb {
-background-color: #09C;
+    background-color: #09C;
 }
 
 /* Estilo del contenedor del chat */
 .chat-box {
-  border: 1px solid #ccc;
-  margin-top: 46.5px;
-  height: 400px;
+    border: 1px solid #ccc;
+    margin-top: 46.5px;
+    height: 400px;
 }
 
 .chat-box .card-body {
@@ -73,41 +73,41 @@ background-color: #09C;
 /* Estilo de los mensajes*/
 
 .bocadillo {
-  max-width: 70%;
-  padding: 8px 12px;
-  border-radius: 8px;
-  margin-bottom: 8px;
+    max-width: 70%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
 }
 
 .bocadillo-izquierda {
-  background-color: #dcf8c6;
-  margin-right: auto;
+    background-color: #dcf8c6;
+    margin-right: auto;
 }
 
 .bocadillo-derecha {
-  background-color: #e4e4e4;
-  margin-left: auto;
+    background-color: #e4e4e4;
+    margin-left: auto;
 }
 /* Estilo del desplegable de recomendaciones */
 
 .dropdown-menu {
-  display: none;
-  position: absolute;
-  z-index: 1;
-  background-color: #f1f1f1;
-  width: 94%;
-  max-height: 115px;
-  overflow-y: auto;
-  border: 1px solid #ccc;
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: #f1f1f1;
+    width: 94%;
+    max-height: 115px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
 }
 
 .dropdown-menu li {
-  padding: 5px 10px;
-  cursor: pointer;
+    padding: 5px 10px;
+    cursor: pointer;
 }
 
 .dropdown-menu li:hover {
-  background-color: #ddd;
+    background-color: #ddd;
 }
 
 /* Estilo del mensaje de error de agregar y eliminar amigos */
@@ -122,4 +122,76 @@ background-color: #09C;
 #listaUsuarios:hover {
     background-color: #ddd;
     cursor: pointer;
+}
+
+/* tooltip para los amigos */
+
+#contenedorImgUsuario {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip {
+    position: absolute;
+    visibility: hidden;
+    top: 50%;
+    left: 110%; /* ajusta la distancia del tooltip a la derecha */
+    background-color: #f7f7f7;
+    color: black;
+    text-align: left;
+    padding: 15px;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); /* para agregar sombra */
+    z-index: 999;
+    width: 250px;
+    font-family: Arial, sans-serif;
+    word-break: break-all;
+}
+
+.tooltip-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.tooltip-header img {
+    margin-right: 10px;
+}
+
+.tooltip-header h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.tooltip-content {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+#contenedorImgUsuario:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Estilo del envio de mensajes */
+
+
+
+#inputEnvioMensaje {
+    border-radius: 30px;
+}
+
+#flechaEnvioMensaje {
+    border-radius: 30px;
+    margin-left: 2px;
+}
+
+/* Imagen cuando no inicias sesion */
+
+#imagenNoSesion {
+    width: 800px;
+    border-radius: 3px;
 }

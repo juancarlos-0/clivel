@@ -1,3 +1,12 @@
+<%-- 
+    Document   : index
+    Created on : 16 may 2023, 0:03:22
+    Author     : Juancarlos
+--%>
+
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -7,30 +16,56 @@
         <title>Indice</title>
         <link rel="stylesheet" href="estilos/index.css"/>
         <link rel="stylesheet" href="bootstrap5/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     </head>
 
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    CLIVEL
-                </a>
+                <c:if test="${not empty sessionScope.datosUsuario}">
+                    <link rel="stylesheet" href="estilos/estiloIconosImagen.css"/>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="${sessionScope.datosUsuario.getFoto() != null ? sessionScope.datosUsuario.getFoto() : 'img/usuario.png'}" alt="Imagen de perfil" width="50px" height="46px" class="rounded-circle"/>
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item dropdown-item-icon" href="perfil.jsp">Editar usuario<i class="bi bi-person-circle"></i></a></li>
+                            <li><a class="dropdown-item dropdown-item-icon" href="Cerrar_sesion">Cerrar sesión<i class="bi bi-box-arrow-right"></i></a></li>
+                        </ul>
+
+                    </div>
+
+                </c:if>
+                <c:if test="${empty sessionScope.datosUsuario}">
+                    <a class="navbar-brand" href="#">
+                        CLIVEL
+                    </a>
+                </c:if>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="amigos.jsp">Amigos</a>
-                        </li>
+                        <c:if test="${not empty sessionScope.datosUsuario}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="Preparar_amigos">Amigos</a>
+                            </li>
+                        </c:if>
+                        <c:if test="${empty sessionScope.datosUsuario}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="amigos.jsp">Amigos</a>
+                            </li>
+                        </c:if>
                         <li class="nav-item">
                             <a class="nav-link" href="comunidades.jsp">Comunidad</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Juegos</a>
+                            <a class="nav-link" href="juegos.jsp">Juegos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Noticias</a>
@@ -44,12 +79,14 @@
             <h1 class="textoBienvenida">Bienvenido/a a Clivel</h1>
             <p class="texto2Bienvenida">La red social para los amantes de los videojuegos</p>
             <div>
-                <button class="boton1" onclick="
-                        window.location.href = 'login.jsp';
-                        ">Iniciar sesión</button>
-                <button class="boton2" onclick="
-                        window.location.href = 'registro.jsp';
-                        ">Registrarse</button>
+                <c:if test="${empty sessionScope.datosUsuario}">
+                    <button class="boton1" onclick="
+                            window.location.href = 'login.jsp';
+                            ">Iniciar sesión</button>
+                    <button class="boton2" onclick="
+                            window.location.href = 'registro.jsp';
+                            ">Registrarse</button>
+                </c:if>
             </div>            
         </div>
 
@@ -112,8 +149,8 @@
                         <div class="comunidad-texto">
                             <h2>Juegos</h2>
                             <p>Podrás ver todos los juegos y una descripción de ellos,
-                             además podrás dar una valoración y ver la de los demas usuarios. Si superas
-                            las 20 valoraciones se te concedera el rango de experto.</p>
+                                además podrás dar una valoración y ver la de los demas usuarios. Si superas
+                                las 20 valoraciones se te concedera el rango de experto.</p>
                             <a href="#" class="btn btn-primary">Ver los juegos</a>
                         </div>
                     </div>
@@ -130,7 +167,7 @@
                         <div class="comunidad-texto">
                             <h2>Noticias</h2>
                             <p>Podrás encontrar todas las noticias de la actualidad del
-                            mundo de los videojuegos para estar siempre imformado/a.</p>
+                                mundo de los videojuegos para estar siempre imformado/a.</p>
                             <a href="#" class="btn btn-primary">Ver las noticias</a>
                         </div>
                     </div>

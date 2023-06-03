@@ -4,15 +4,24 @@
  */
 package controlador;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +35,7 @@ import modelo.Usuario;
  *
  * @author Juancarlos
  */
+@MultipartConfig
 @WebServlet(name = "Controlador_perfil", urlPatterns = {"/Controlador_perfil"})
 public class Controlador_perfil extends HttpServlet {
 
@@ -62,9 +72,9 @@ public class Controlador_perfil extends HttpServlet {
                 String contresenia = request.getParameter("contrasenia");
                 String nombre = request.getParameter("nombre");
                 String fechaNacimiento = request.getParameter("fechaNacimiento");
-                SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
                 Date fechaNacimientoDate = formatoFecha.parse(fechaNacimiento);
-                String descripcion = request.getParameter("descripcion");
+                String descripcion = new String(request.getParameter("descripcion").getBytes("ISO-8859-1"), "UTF-8");
                 String correo = request.getParameter("correo");
                 String idString = request.getParameter("id");
                 int id = Integer.parseInt(idString);
@@ -105,22 +115,39 @@ public class Controlador_perfil extends HttpServlet {
                 }
             }
 
-            if (botonCambiarFoto != null) {
+            if (botonCambiarDatos == null) {
                 // Obtener el usuario de la sesión
                 Usuario objetoSesion = (Usuario) session.getAttribute("datosUsuario");
-                int id = objetoSesion.getId_usuario();
+
+                //Obtener la imagen mediante una Part
+                Part parteFichero = request.getPart("foto-perfil");
+                //Obtener el nombre del fichero
+                String nombreFichero = parteFichero.getSubmittedFileName();
+                //Obtener la extensión del fichero
+                String extensionFichero = nombreFichero.substring(nombreFichero.lastIndexOf("."));
+                //Crear ubicación para el fichero
+                String ubicacion = getServletContext().getRealPath("/img/usuarios/");
+                //Nombre único para el fichero con el nombre del usuario
+                String nombreDeFichero = objetoSesion.getUsuario() + extensionFichero;
+                //Obtener la ruta de destino
+                String rutaDestino = ubicacion + File.separator + (objetoSesion.getUsuario() + extensionFichero);
+                Path rutaArchivo = Paths.get(rutaDestino);
+
+                // Verificar si el archivo existe y eliminarlo si es necesario
+                if (Files.exists(rutaArchivo)) {
+                    Files.delete(rutaArchivo);
+                }
                 
-
-                Usuario u = new Usuario();
-                u.setId_usuario(id);
-
-                //Obtener la foto de perfil
-                Part fotoPerfil = request.getPart("foto-perfil");
-
+                Files.copy(parteFichero.getInputStream(), Paths.get(ubicacion, nombreDeFichero));
+                //Guardar la ruta de la foto en la BD
                 UsuarioModeloDAO umDAO = new UsuarioModeloDAO();
-                umDAO.subirFoto(u, fotoPerfil);
+                umDAO.subirFoto(objetoSesion.getId_usuario(), "img/usuarios/" + nombreDeFichero);
                 umDAO.cerrarConexion();
-                //Redirigir
+                //Establecer nuevamente el objeto con la nueva ruta
+                objetoSesion.setFoto("img/usuarios/" + nombreDeFichero);
+                request.setAttribute("datosUsuario", objetoSesion);
+
+                //Redirigir nuevamente al login
                 request.getRequestDispatcher("perfil.jsp").forward(request, response);
                 return;
             }

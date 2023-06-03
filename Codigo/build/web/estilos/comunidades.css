@@ -167,3 +167,43 @@ input[id="radio4"]:checked ~ .paginacion .paginationItem[for="radio4"] {
 }
 
 
+/* Quitar estilo al dropdown */
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+/* Estilo de los iconos de la imagen */
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dropdown-item-icon {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-item-icon i {
+    margin-left: 5px;
+}
+
+.dropdown-item-icon {
+    display: flex;
+    align-items: center;
+    transition: all 0.25s ease;
+}
+
+.dropdown-item-icon:hover {
+    font-size: 1.05em;
+}
+
+.dropdown-item-icon i:hover {
+    font-size: 1.05em;
+}
+
+.dropdown-item-icon:hover i {
+    transform: scale(1.05);
+}

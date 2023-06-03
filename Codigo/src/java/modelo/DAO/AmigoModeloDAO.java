@@ -132,7 +132,7 @@ public class AmigoModeloDAO {
                     amigo.setApellidos(rs.getString("apellidos"));
                     amigo.setCorreo(rs.getString("correo"));
                     amigo.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
-                    amigo.setFoto(rs.getBytes("foto"));
+                    amigo.setFoto(rs.getString("foto"));
                     amigo.setDescripcion(rs.getString("descripcion"));
                     amigo.setRol(rs.getString("rol"));
                     amigo.setExperto(rs.getBoolean("experto"));

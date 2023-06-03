@@ -1,0 +1,989 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 27 may 2023, 1:54:29
+    Author     : Juancarlos
+*/
+
+/* Estilo del buscador */
+.formularioBusqueda {
+    display: flex;
+    align-items: center;
+    border-radius: 25px;
+    background-color: hsla(0,0%,100%,.16);
+    padding: 5px;
+}
+
+.buscador {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 5px;
+}
+
+.buscador:focus {
+    outline: none;
+}
+
+.formularioBusqueda i {
+    margin-right: 5px;
+    margin-left: 15px;
+    color: #888;
+}
+
+.formularioBusqueda:hover {
+    background-color: white;
+}
+
+.formularioBusqueda:hover i{
+    color: black;
+}
+
+/* Estilo del body */
+body {
+    background-color: #151515;
+    margin-top: 0;
+    padding-top: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo del navbar */
+
+#navbarNav {
+    flex-grow: 0;
+
+}
+
+.navbarPrincipal {
+    padding-top: 20px;
+    z-index: 3;
+}
+
+/* Imagen de fondo */
+
+.imagenDeFondo {
+    position: absolute;
+    overflow: hidden;
+}
+
+.imagenDeFondo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(15, 15, 15, 0), rgba(21, 21, 21, 0.5) 30%, #151515 60%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.imagenDeFondo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4);
+}
+
+/* Estilo del contenedor central */
+
+.contenedorCentral {
+    margin-top: 60px;
+    z-index: 2;
+    color: white;
+    display: flex;
+    width: 100%;
+}
+
+
+/* Estilo del contenedor de la izquierda */
+
+.contenedorIzquierda {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    float: left;
+    z-index: 3;
+}
+
+.contenedorIzquierda h1{
+    margin-left: 10%;
+    font-size: 60px;
+}
+
+/* Estilo del contenedor de la derecha */
+
+.contenedorDerecha {
+    z-index: 3;
+    width: 40%;
+    float: right;
+}
+
+
+/* quitar estilo a enlaces de los iconos */
+
+.icon-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.icon-link:not(:first-child) {
+    margin-left: 6px;
+}
+
+.icon-link:hover {
+    color: white;
+}
+
+.bi-xbox {
+    transition: color 0.5s ease;
+}
+
+.bi-xbox:hover {
+    color: green;
+}
+
+.bi-playstation {
+    transition: color 0.5s ease;
+}
+
+.bi-playstation:hover {
+    color: blue;
+}
+
+.bi-nintendo-switch {
+    transition: color 0.5s ease;
+}
+
+.bi-nintendo-switch:hover {
+    color: orange;
+}
+
+.bi-pc {
+    transition: color 0.5s ease;
+}
+
+.bi-pc:hover {
+    color: yellow;
+}
+
+.bi-phone {
+    transition: color 0.5s ease;
+}
+
+.bi-phone:hover {
+    color: purple;
+}
+
+/* estilo de los iconos y del tiempo jugado */
+
+.plataformasYTiempo {
+    margin-left: 10%;
+}
+
+.tiempoDeJuego {
+    margin-left: 6px;
+}
+
+.fechaLanzamiento {
+    background-color: white;
+    color: black;
+    padding: 4px;
+    border-radius: 10px;
+}
+
+/* Estilo de la descripcion */
+
+.contenedorIzquierda p {
+    margin-left: 10%;
+    text-align: justify;
+}
+
+.descripcion {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+/* Color de varios parrafos */
+
+.colorGris {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+/* Estilo del video e imagenes */
+
+.juego_capturas {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.juego_capturas_inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.juego_movie {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.juego_carta_video {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.juego_carta_video video{
+    width: 100%;
+}
+
+.juego_carta_video .imagenPricipal{
+    width: 100%;
+}
+.juego_capturas_lista {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.juego_captura {
+    width: 47.5%;
+}
+
+.juego_captura img {
+    width: 100%;
+    display: block;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.ver_mas {
+    width: 100%;
+    text-align: center;
+}
+
+.ver_mas a {
+    color: #000;
+    text-decoration: none;
+}
+
+/* Estilo de los enlace de compras */
+
+.contenedorEnlaces {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorEnlacesCompra {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    cursor: pointer;
+}
+
+.enlaceCompra {
+    display: flex;
+    justify-content: space-between;
+    color: hsla(0,0%,100%,.5);
+    width: 47.5%;
+    background-color: hsla(0,0%,100%,.1);
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.enlaceCompra:hover {
+    background-color: white;
+    color: black;
+}
+
+.enlaceCompra i {
+    text-align: right;
+}
+
+.contendorPalabraComprar {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.palabraComprar {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    color: hsla(0,0%,100%,.4);
+}
+
+.palabraComprar p {
+    font-size: 20px;
+}
+
+/* Estilo de la lista de juegos del navegador */
+
+#resultadosBusqueda {
+    position: fixed;
+    top: 80px;
+    left: 5%;
+    width: 90%;
+    background-color: black;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 9999;
+    border-radius: 6px;
+}
+
+#resultadosBusqueda .formularioJuego {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+#resultadosBusqueda .formularioJuego img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+#resultadosBusqueda .formularioJuego p {
+    font-size: 12px; /* Ajusta el tamaño de fuente del nombre del juego según tus necesidades */
+    color: white;
+    margin: 0;
+}
+
+/* Estilo para los comentarios */
+
+.contenedorComentarios {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comentarios {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.parrafoPrincipalComentarios {
+    color: white;
+    font-size: 25px;
+}
+
+/* Estilo para el botón de añadir comentario */
+
+.contenedorBotonFormulario {
+    width: 100%;
+    height: 116px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 10px;
+}
+
+.contenedorBotonFormulario:hover {
+    background-color: white;
+    color: black;
+}
+
+.iconoMas {
+    width: 100%;
+    height: 50%;
+}
+
+.iconoMas p {
+    font-size: 44px;
+    margin-left: 4%;
+}
+
+.divPalabraComentar {
+    width: 100%;
+    height: 50%;
+}
+
+.divPalabraComentar p {
+    font-size: 24px;
+    margin-left: 4%;
+}
+
+/* Ventana modal de los comentarios */
+
+#miModal {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #151515;
+    align-items: center;
+}
+
+.modalContenido {
+    background-color: #151515;
+    width: 62%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Boton cerrar de la ventana modal */
+
+.modalCerrar {
+    color: #aaaaaa;
+    float: right;
+    font-weight: bolder;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: hsla(0,0%,100%,.1);
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 3%;
+    align-self: flex-end;
+}
+
+.modalCerrar:hover {
+    color: black;
+    background-color: white;
+}
+
+.modalCerrar i {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+/* Estilo de la valoracion de la ventana modal */
+
+.estiloPValoracion {
+    color: hsla(0,0%,100%,.4);
+    margin-top: 25px;
+    font-size: 22px;
+}
+
+.valoracion {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.valoracion-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: white;
+    background-color: #888888;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 22%;
+}
+
+
+.valoracion-label:hover {
+    background-color: white;
+    color: black;
+}
+
+.valoracion-label input[type="radio"] {
+    display: none;
+}
+
+.valoracion-label i {
+    margin-left: auto;
+}
+
+/* Estilo radio button marcado */
+
+.valoracion-label.selected {
+    background-color: white;
+    color: black;
+}
+
+/* Estilo de los iconos de la valoracion */
+
+.bi-heart-fill {
+    color: #FF69B4;
+}
+
+.bi-fire {
+    color: red;
+}
+
+.bi-emoji-sunglasses-fill {
+    color: yellow;
+}
+
+.bi-bandaid-fill {
+    color: #FFDAB9;
+}
+
+/* Titulo ventana modal */
+
+.h2Modal {
+    font-size: 52px;
+    color: white;
+}
+
+.naranja {
+    color: orange;
+}
+
+/* Estilo del textare de la valoración */
+
+.textareaValoracion {
+    width: 100%;
+    border-radius: 4px;
+    background-color: black;
+    color: white;
+    border: 0;
+    padding: 20px;
+}
+
+.textareaValoracion:focus {
+    outline: none;
+}
+
+/* Estilo del boton para enviar el comentario */
+
+.enviarComentario {
+    height: 50px;
+    padding: 0 40px;
+    margin-top: 25px;
+    border-radius: 4px;
+    border: 0;
+    font-size: 18px;
+    float: right;
+    background-color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.enviarComentario:hover {
+    background-color: lightgray;
+}
+
+/* Media query para bajar el div izquierdo y hacer responsive */
+
+@media (max-width: 900px) {
+    .contenedorCentral {
+        flex-direction: column;
+    }
+
+    .contenedorIzquierda {
+        width: 100%;
+    }
+
+    .contenedorIzquierda p {
+        margin-right: 10%;
+    }
+
+    .contenedorDerecha {
+        width: 100%;
+    }
+
+    .juego_movie {
+        width: 80%;
+    }
+
+    .juego_capturas_lista {
+        width: 80%;
+    }
+
+    .contenedorEnlacesCompra {
+        width: 80%;
+    }
+
+    .palabraComprar {
+        width: 80%;
+    }
+
+    .contenedorComentarios {
+        width: 100%;
+
+    }
+
+    .comentarios {
+        width: 80%;
+    }
+
+    .contenedorBotonFormulario {
+        width: 100%;
+    }
+
+    .iconoMas {
+        text-align: center;
+    }
+
+    .divPalabraComentar {
+        text-align: center;
+    }
+}
+
+/* Media query para el modal de valoracion */
+
+@media (max-width: 1100px) {
+    .modalContenido {
+        width: 85%;
+        height: 95%;
+    }
+}
+
+@media (max-width: 800px) {
+    .h2Modal {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 600px) {
+    .valoracion-label {
+        width: 45%;
+    }
+}
+
+/* Estilo ventana modal cuando no estas con sesion iniciada */
+
+/* Estilos para la ventana modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: black;
+    color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 0;
+    border-radius: 4px;
+    width: 300px;
+    transform: translateY(-100%);
+    animation: modal-animacion 0.3s ease forwards;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    background-color: #ddd;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modalBotonCerrarFallo {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.modalBotonCerrarFallo:hover,
+.modalBotonCerrarFallo:focus {
+    background-color: #ddd;
+    color: #333;
+}
+
+
+@keyframes modal-animacion {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Estilo para los comentarios */
+
+.listaComentariosIndividual {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.contenedorComentarioIndividual {
+    width: 100%;
+    display: flex;
+    flex-direction: column;   
+}
+
+.seccionesComentarioIndividual {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 15px;
+    color: white;
+}
+
+/* Diseño del header de los comentarios */
+
+.headerComentarioIndividual {
+    width: 95%;
+    font-size: 24px;
+    display: flex;
+    flex-direction: row;
+}
+
+.headerComentarioIndividual i {
+    margin-left: 10px;
+}
+
+/* Diseño del body de los comentarios */
+
+.bodyComentarioIndividual {
+    width: 95%;
+    color: hsla(0,0%,100%,.7);
+    margin-top: 15px;
+}
+
+/* Diseño del footer de los comentarios */
+
+.footerComentarioIndividual {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+/* Diseño de la imagen */
+
+.contenedorImg {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+}
+
+.contenedorImg img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.contenedorImg .contenedorInfoUsuario {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    justify-content: space-between;
+    margin-left: 3px;
+}
+
+/* Diseño de los pulgares */
+
+.pulgares {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.pulgares .btnSinEstilo {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* Color de los pulgares */
+
+.pulgarArriba {
+    color: #39A78E;
+    font-size: 26px;
+    margin-right: 4px;
+}
+
+.pulgarAbajo {
+    color: #D64550;
+    font-size: 26px;
+}
+
+/* Diseño del número de likes obtenidos */
+
+.likesObtenidos {
+    color: #39A78E;
+    font-size: 26px;
+}
+
+/* Diseño de la fecha del comentario */
+
+.fechaComentario {
+    color: hsla(0,0%,100%,.2);
+}
+
+/* Estilo del botón ver mas comentarios */
+
+.contenedorBotonVerMasComentario {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.botonComentario {
+    width: 200px;
+    height: 48px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    cursor: pointer;
+    border: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.botonComentario:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* diseño para el desplegable */
+
+.contendorDesplegableOrden {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 25px;
+}
+
+.desplegableOrden {
+    width: 25%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.contenidoSeleccionado {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+/* Diseño del botón del desplegable */
+
+.botonOrden {
+    background-color: #151515;
+    border: 0;
+}
+
+/* Diseño del contenido del botón */
+
+.tituloSeleccionado {
+    color: white;
+}
+
+.iconoSeleccionado {
+    color: hsla(0,0%,100%,.7);
+}
+
+.liGris {
+    color: orange;
+    margin-bottom: 4px;
+    list-style: none;
+}
+
+/* Lista de opciones del botón con animaciones */
+
+.listaOpciones {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    display: none;
+    background-color: #ffffff;
+    color: black;
+    padding: 10px;
+    margin: 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    animation: desplegarAnimacion 0.3s ease;
+    z-index: 999;
+    text-decoration: none;
+    cursor: pointer;
+    list-style: none;
+}
+
+@keyframes desplegarAnimacion {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.listaOpciones.mostrar {
+    display: block;
+}

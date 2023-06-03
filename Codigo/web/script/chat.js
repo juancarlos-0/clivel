@@ -24,11 +24,17 @@ $('#chat-form').submit(function (event) {
         },
         success: function () {
             // Si la petición se completó correctamente, actualizar la vista del chat
-            $('#chat-body').append(
-                    $('<div>').addClass('bocadillo bocadillo-izquierda').append(
-                    $('<p>').addClass('card-text textoIzquierda').text(message)
-                    )
-                    );
+            if (message !== "") {
+                $('#chat-body').append(
+                        $('<div>').addClass('bocadillo bocadillo-izquierda').append(
+                        $('<p>').addClass('card-text textoIzquierda').text(message)
+                        )
+                        );
+                $('input[name="chat-input"]').attr("placeholder", "Escribe un mensaje...");
+            } else {
+                $('input[name="chat-input"]').attr("placeholder", "Debe rellenar el campo");
+            } 
+
 
 
 
@@ -60,7 +66,7 @@ function verificarNuevosMensajes() {
             $('#chat-body').append(data);
 
             // Establecer la posición del scroll en la parte inferior del chat-body solo si se agregaron nuevos mensajes
-            
+
         }
     });
 }
@@ -89,4 +95,3 @@ cargarMensajesAnteriores();
 
 // Llamar a la función verificarNuevosMensajes cada 5 segundos
 setInterval(verificarNuevosMensajes, 500);
-

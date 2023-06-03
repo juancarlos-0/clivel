@@ -9,6 +9,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -122,7 +126,7 @@ public class UsuarioModeloDAO {
                 usuarioDatos.setApellidos(resultSet.getString("apellidos"));
                 usuarioDatos.setCorreo(resultSet.getString("correo"));
                 usuarioDatos.setFecha_nacimiento(resultSet.getDate("fecha_nacimiento"));
-                usuarioDatos.setFoto(resultSet.getBytes("foto"));
+                usuarioDatos.setFoto(resultSet.getString("foto"));
                 usuarioDatos.setDescripcion(resultSet.getString("descripcion"));
                 usuarioDatos.setRol(resultSet.getString("rol"));
                 usuarioDatos.setExperto(resultSet.getBoolean("experto"));
@@ -162,13 +166,14 @@ public class UsuarioModeloDAO {
         }
     }
 
-    //Método que actualiza los datos con el usuario incluido
+    //Método que actualiza los datos con el usuario incluido y además añade que
+    //el usuario no se pueda actualizar otra vez
     public boolean actualizaDatosUsuario(Usuario usuario) {
         try {
             // Preparar una consulta para actualizar los datos del usuario
             PreparedStatement preSta = conexion.prepareStatement(
                     "UPDATE usuario SET apellidos = ?, contrasenia = ?, nombre = ?, "
-                    + "fecha_nacimiento = ?, descripcion = ?, usuario = ? WHERE id_usuario = ?");
+                    + "fecha_nacimiento = ?, descripcion = ?, usuario = ?, usuario_cambiado = 1 WHERE id_usuario = ?");
 
             preSta.setString(1, usuario.getApellidos());
             preSta.setString(2, usuario.getContrasenia());
@@ -211,19 +216,20 @@ public class UsuarioModeloDAO {
     }
 
     //Método para subir una foto para el perfil del usuario
-    public boolean subirFoto(Usuario usuario, Part foto) throws IOException {
-
+    public boolean subirFoto(int idUsuario, String rutaFoto) {
         try {
             // Preparar la sentencia SQL para actualizar la foto del usuario
             String sql = "UPDATE usuario SET foto = ? WHERE id_usuario = ?";
             PreparedStatement statement = conexion.prepareStatement(sql);
 
+            System.out.println("ssssssssss");
             // Establecer los parámetros de la sentencia SQL
-            statement.setBinaryStream(1, foto.getInputStream());
-            statement.setInt(2, usuario.getId_usuario());
+            statement.setString(1, rutaFoto);
+            statement.setInt(2, idUsuario);
 
             // Ejecutar la sentencia SQL
             int filasActualizadas = statement.executeUpdate();
+            System.out.println("asdkfjaskfldjkljkjkkjklkdjklsjkf");
 
             return filasActualizadas > 0; // Indicar si la foto se actualizó correctamente
         } catch (SQLException e) {
@@ -289,13 +295,15 @@ public class UsuarioModeloDAO {
 
         List<Usuario> listaDeUsuarios = new ArrayList<>();
 
+        // Devolver lista vacía si la lista de usuarios está vacía
+        if (listaDeId.isEmpty()) {
+            return listaDeUsuarios; 
+        }
+
         try {
-            // Preparar una consulta obtener los usuarios
             // Preparar una consulta para obtener los usuarios
             PreparedStatement preSta = conexion.prepareStatement(
-                    "SELECT * FROM usuario WHERE id_usuario IN ("
-                    + String.join(",", Collections.nCopies(listaDeId.size(), "?"))
-                    + ")"
+                    "SELECT * FROM usuario WHERE id_usuario IN (" + String.join(",", Collections.nCopies(listaDeId.size(), "?")) + ")"
             );
 
             for (int i = 0; i < listaDeId.size(); i++) {

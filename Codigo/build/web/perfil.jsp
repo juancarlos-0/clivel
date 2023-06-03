@@ -12,26 +12,29 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Perfil</title>
         <link rel="stylesheet" href="bootstrap5/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
         <link rel="stylesheet" href="estilos/perfil.css"/>
         <script src="script/perfil.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a href="perfil.jsp">
-                    <img src="${sessionScope.datosUsuario.getFoto() 
-                                != null ? sessionScope.datosUsuario.getFoto() 
-                                : 'img/usuario.png'}" 
-                         alt="Imagen de perfil" width="50px" 
-                         height="46px" class="rounded-circle"/>
-                </a>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="${sessionScope.datosUsuario.getFoto() != null ? sessionScope.datosUsuario.getFoto() : 'img/usuario.png'}" alt="Imagen de perfil" width="50px" height="46px" class="rounded-circle"/>
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item dropdown-item-icon" href="Cerrar_sesion">Cerrar sesión<i class="bi bi-box-arrow-right"></i></a></li>
+                    </ul>
+                </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link" aria-current="page" href="index.jsp">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="Preparar_amigos">Amigos</a>
@@ -40,7 +43,7 @@
                             <a class="nav-link" href="comunidades.jsp">Comunidad</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Juegos</a>
+                            <a class="nav-link" href="juegos.jsp">Juegos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Noticias</a>
@@ -61,10 +64,26 @@
                             <h5 class="card-title">Editar información de perfil</h5>
                             <form action="Controlador_perfil" method="POST">
                                 <div class="mb-3">
-                                    <label for="profile-name" class="form-label">Nombre de usuario</label>
-                                    <input type="text" class="form-control" 
-                                           id="usuario" name="usuario" 
-                                           value="${sessionScope.datosUsuario.getUsuario()}">
+                                    <label for="profile-name" class="form-label">Usuario
+                                        <c:if test="${!sessionScope.datosUsuario.isUsuario_cambiado()}">
+                                            (Un cambio disponible)
+                                        </c:if>
+                                        <c:if test="${sessionScope.datosUsuario.isUsuario_cambiado()}">
+                                            (Sin cambios disponibles)
+                                        </c:if>
+                                    </label>
+                                    <c:if test="${sessionScope.datosUsuario.isUsuario_cambiado()}">
+                                        <input type="text" class="form-control" 
+                                               id="usuario" name="usuario" 
+                                               value="${sessionScope.datosUsuario.getUsuario()}" disabled="disabled">
+                                        <input type="text" id="usuario" name="usuario" value="${sessionScope.datosUsuario.getUsuario()}" style="display: none">
+                                    </c:if>
+                                    <c:if test="${!sessionScope.datosUsuario.isUsuario_cambiado()}">
+                                        <input type="text" class="form-control" 
+                                               id="usuario" name="usuario" 
+                                               value="${sessionScope.datosUsuario.getUsuario()}">
+                                    </c:if>
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="profile-name" class="form-label">Contraseña</label>
@@ -86,18 +105,17 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="profile-description" class="form-label">Descripción (200 carácteres máximo)</label>
-                                    <textarea class="form-control" id="descripcion"
-                                              name="descripcion" rows="3" maxlength="200">${sessionScope.datosUsuario.getDescripcion()}
-                                    </textarea>
+                                    <textarea class="form-control" id="descripcion" name="descripcion" rows="3" maxlength="200">${sessionScope.datosUsuario.getDescripcion()}</textarea>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="birthday" class="form-label">Fecha de nacimiento</label>
+                                    <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
                                     <input type="date" class="form-control" 
                                            id="fechaNacimiento" name="fechaNacimiento"
-                                           value="${sessionScope.datosUsuario.getFecha_nacimiento()}">
+                                           value="${sessionScope.datosUsuario.getFecha_nacimiento()}"
+                                           min="1940-01-01" max="2008-12-31">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="birthday" class="form-label">Correo</label>
+                                    <label for="correo" class="form-label">Correo</label>
                                     <input type="text" class="form-control" disabled="disabled" 
                                            id="correo" name="correo"
                                            value="${sessionScope.datosUsuario.getCorreo()}">
@@ -133,8 +151,7 @@
                                 </div>
                                 <input type="number" name="id" id="id"
                                        value="${sessionScope.datosUsuario.getId_usuario()}"
-                                       style="display: none"
-                                       >
+                                       style="display: none">
                                 <button type="submit" class="btn btn-primary"
                                         id="cambiarFoto" name="cambiarFoto"
                                         >Subir foto
@@ -143,6 +160,7 @@
                         </div>
                     </div>
                 </div>
+
 
             </div>
         </div>

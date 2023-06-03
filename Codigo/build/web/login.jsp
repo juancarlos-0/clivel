@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="bootstrap5/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
         <script src="script/login.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <title>Login</title>
     </head>
 
@@ -39,7 +40,13 @@
                                 <div class="items">
                                     <label for="">Usuario 
                                         <c:if test="${not empty usuarioFallo}">
-                                            <p style="color: red;">${usuarioFallo}</p>
+                                            <script>
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    title: 'Error',
+                                                    text: 'Datos incorrectos'
+                                                })
+                                            </script>
                                         </c:if>
                                     </label>
                                     <div class="input">
@@ -50,7 +57,13 @@
                                 <div class="items">
                                     <label for="">Contraseña 
                                         <c:if test="${not empty contraFallo}">
-                                            <p style="color: red;">${contraFallo}</p>
+                                            <script>
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    title: 'Error',
+                                                    text: 'Datos incorrectos'
+                                                })
+                                            </script>
                                         </c:if>
                                     </label>
                                     <div class="input">

@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelo.DAO.UsuarioModeloDAO;
 import modelo.Usuario;
 
@@ -51,7 +52,7 @@ public class Comprobar_registro_de_usuario extends HttpServlet {
 
                 //Obtener fecha y convertirla util.DATE
                 String fecha_nacimiento = request.getParameter("fecha-nacimiento");
-                SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
                 Date fechaNacimiento = formatoFecha.parse(fecha_nacimiento);
 
                 String correo = request.getParameter("correo");
@@ -91,8 +92,17 @@ public class Comprobar_registro_de_usuario extends HttpServlet {
                 }
 
                 umDAO.registrarUsuario(objeto_usuario);
+
+                //Obtener todos los datos y enviar a la página de perfil
+                //Crear un objeto con los datos del usuario el cual será una sesión
+                Usuario datosUsuario = new Usuario();
+                datosUsuario = umDAO.devolverDatos(usuario);
                 umDAO.cerrarConexion();
-                response.sendRedirect("perfil.jsp");
+                //Crear la sesión
+                HttpSession session = request.getSession();
+                session.setAttribute("datosUsuario", datosUsuario);
+                // Enviar a la página de perfil
+                request.getRequestDispatcher("perfil.jsp").forward(request, response);
                 return;
 
             } else {
@@ -102,6 +112,7 @@ public class Comprobar_registro_de_usuario extends HttpServlet {
         }
     }
 
+    //funcion que devuelve lo que ha introcido el usuario
     public void camposIntroducidos(HttpServletRequest request, String nombre,
             String apellidos, String contrasenia, String fecha_nacimiento) {
         request.setAttribute("nombre", nombre);

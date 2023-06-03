@@ -1,0 +1,335 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 20 may 2023, 12:49:57
+    Author     : Juancarlos
+*/
+
+/* Estilo del body */
+body {
+    background-color: #151515;
+}
+
+/* Estilo del buscador */
+.formularioBusqueda {
+    display: flex;
+    align-items: center;
+    border-radius: 25px;
+    background-color: hsla(0,0%,100%,.16);
+    padding: 5px;
+}
+
+.buscador {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 5px;
+}
+
+.buscador:focus {
+    outline: none;
+}
+
+.formularioBusqueda i {
+    margin-right: 5px;
+    margin-left: 15px;
+    color: #888;
+}
+
+.formularioBusqueda:hover {
+    background-color: white;
+}
+
+.formularioBusqueda:hover i{
+    color: black;
+}
+
+/* Estilo del navbar */
+
+#navbarNav {
+    flex-grow: 0;
+
+}
+
+.navbarPrincipal {
+    padding-top: 20px;
+    z-index: 3;
+}
+
+
+/* Estilo del titulo */
+
+h1 {
+    font-size: 80px;
+    color: white;
+}
+
+/* Estilos del pie de página */
+footer {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 50px;
+    color: white;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Quitar estilo al dropdown */
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+/* margenes de las cartas */
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: #151515;
+}
+
+.cartaJuego {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 320px;
+    background-size: cover;
+    background-position: center;
+}
+
+.cartaJuego img {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    background-color: #222222;
+    color: white;
+}
+
+.plataforma-names i:not(:first-child) {
+    margin-left: 10px;
+}
+
+.contenedor-linea {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.metacritic-container {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.metacritic-container p{
+    margin-bottom: 0;
+    border: 2px yellow solid;
+    padding: 0px 10px;
+    border-radius: 10px;
+}
+
+/* Estilo para la paginación */
+.paginacion {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.paginacion button {
+    margin: 0 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.paginacion button:hover {
+    background-color: #e9ecef;
+}
+
+.paginacion button:active {
+    background-color: #dee2e6;
+}
+
+.paginacion .btn-secondary {
+    padding: 10px 20px;
+    color: #fff;
+    background: #c5b5e6;
+    text-decoration: none;
+}
+
+.paginacion .btn-secondary:hover {
+    background-color: #9e89b8;
+    border-color: #9e89b8;
+}
+
+/* Contenedor de las busquedas */
+
+.contenedorBuscar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* Diseño de los select */
+
+select {
+    background-color: #222222;
+    color: lightgrey;
+    border-radius: 4px;
+    border: 0;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.default-text {
+    color: black;
+}
+
+.selected-text {
+    color: green;
+}
+
+/* quitar estilo a enlaces de los iconos */
+
+.icon-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.icon-link:not(:first-child) {
+    margin-left: 10px;
+}
+
+.icon-link:hover {
+    color: white;
+}
+
+.bi-xbox {
+    transition: color 0.5s ease;
+}
+
+.bi-xbox:hover {
+    color: green;
+}
+
+.bi-playstation {
+    transition: color 0.5s ease;
+}
+
+.bi-playstation:hover {
+    color: blue;
+}
+
+.bi-nintendo-switch {
+    transition: color 0.5s ease;
+}
+
+.bi-nintendo-switch:hover {
+    color: orange;
+}
+
+.bi-pc {
+    transition: color 0.5s ease;
+}
+
+.bi-pc:hover {
+    color: yellow;
+}
+
+.bi-phone {
+    transition: color 0.5s ease;
+}
+
+.bi-phone:hover {
+    color: purple;
+}
+
+/* Convertir el boton en un h5 */
+
+.btn-like-h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    transition: color 0.3s ease;
+}
+
+.btn-like-h5:hover {
+    color: gray;
+}
+
+/* Cuando se reduce la página que se amplien las cards */
+@media (max-width: 768px) {
+    .contenedorBuscar{
+        width: 100%;
+        display: flex;
+        margin-top: 2px;
+        flex-direction: column;
+    }
+    .contenedorBuscar div{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #busqueda {
+        width: 100%;
+        margin-top: 4px;
+    }
+
+    select {
+        margin-top: 4px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 60px;
+    }
+
+    .formulario .imagen-button img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .cartaJuego {
+        width: 100%;
+    }
+
+    .cartaJuego img {
+        height: 240px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .paginacion button {
+        padding: 2px 6px;
+        font-size: 10px;
+        font-weight: bolder;
+    }
+
+}

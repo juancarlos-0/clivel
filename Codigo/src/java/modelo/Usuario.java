@@ -19,7 +19,7 @@ public class Usuario {
     private String apellidos;
     private String correo;
     private Date fecha_nacimiento;
-    private byte[] foto;
+    private String foto;
     private String descripcion;
     private String rol;
     private boolean experto;
@@ -29,7 +29,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int id_usuario, String usuario, String contrasenia, String nombre, String apellidos, String correo, Date fecha_nacimiento, byte[] foto, String descripcion, String rol, boolean experto, String estado, boolean usuario_cambiado) {
+    public Usuario(int id_usuario, String usuario, String contrasenia, String nombre, String apellidos, String correo, Date fecha_nacimiento, String foto, String descripcion, String rol, boolean experto, String estado, boolean usuario_cambiado) {
         this.id_usuario = id_usuario;
         this.usuario = usuario;
         this.contrasenia = contrasenia;
@@ -101,11 +101,11 @@ public class Usuario {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    public byte[] getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(byte[] foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 
