@@ -20,6 +20,7 @@ public class Usuario {
     private String correo;
     private Date fecha_nacimiento;
     private String foto;
+    private String fondo;
     private String descripcion;
     private String rol;
     private boolean experto;
@@ -29,7 +30,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int id_usuario, String usuario, String contrasenia, String nombre, String apellidos, String correo, Date fecha_nacimiento, String foto, String descripcion, String rol, boolean experto, String estado, boolean usuario_cambiado) {
+    public Usuario(int id_usuario, String usuario, String contrasenia, String nombre, String apellidos, String correo, Date fecha_nacimiento, String foto, String fondo, String descripcion, String rol, boolean experto, String estado, boolean usuario_cambiado) {
         this.id_usuario = id_usuario;
         this.usuario = usuario;
         this.contrasenia = contrasenia;
@@ -37,6 +38,7 @@ public class Usuario {
         this.apellidos = apellidos;
         this.correo = correo;
         this.fecha_nacimiento = fecha_nacimiento;
+        this.fondo = fondo;
         this.foto = foto;
         this.descripcion = descripcion;
         this.rol = rol;
@@ -108,6 +110,16 @@ public class Usuario {
     public void setFoto(String foto) {
         this.foto = foto;
     }
+
+    public String getFondo() {
+        return fondo;
+    }
+
+    public void setFondo(String fondo) {
+        this.fondo = fondo;
+    }
+    
+    
 
     public String getDescripcion() {
         return descripcion;

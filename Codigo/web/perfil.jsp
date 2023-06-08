@@ -159,6 +159,29 @@
                             </form>
                         </div>
                     </div>
+                    <div class="card">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <h5 class="card-title">Cambiar fondo</h5>
+                            <img src="${sessionScope.datosUsuario.getFondo() 
+                                        != null ? sessionScope.datosUsuario.getFondo()
+                                        : 'img/usuario.png'}" 
+                                 class="card-img-top" alt="Imagen de perfil">
+                            <p class="card-text">Haz clic en el botón de abajo para subir un nuevo fondo.</p>
+                            <form method="POST" action="Controlador_perfil" enctype="multipart/form-data"> 
+                                <div class="mb-3">
+                                    <input type="file" class="form-control" 
+                                           id="fondo-perfil" name="fondo-perfil">
+                                </div>
+                                <input type="number" name="id" id="id"
+                                       value="${sessionScope.datosUsuario.getId_usuario()}"
+                                       style="display: none">
+                                <button type="submit" class="btn btn-primary"
+                                        id="cambiarFondo" name="cambiarFondo"
+                                        >Subir foto
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
 
 

@@ -28,8 +28,8 @@
                 <div class="col-sm-3 p-0 cambiar">
                     <div class="login-form">
                         <div class="logo">
-                            <a href="index.html" class="">
-                                <img src="img/logo/logo_blanco_negro.jpg" alt="Logo" class="img-fluid">
+                            <a href="index.jsp" class="enlaceClivel">
+                                <img src="img/logo/logoClivel.jpg" alt="Logo" class="imagenClivel">
                             </a>
                         </div>
                         <div class="page-heading">
@@ -45,7 +45,7 @@
                                                     icon: 'error',
                                                     title: 'Error',
                                                     text: 'Datos incorrectos'
-                                                })
+                                                });
                                             </script>
                                         </c:if>
                                     </label>

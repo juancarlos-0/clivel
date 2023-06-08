@@ -11,6 +11,7 @@ CREATE TABLE Usuario (
     correo VARCHAR(50) NOT NULL,
     fecha_nacimiento date,   
     foto VARCHAR(200) NULL,
+    fondo VARCHAR(200) NULL,
     descripcion VARCHAR(200) NULL,
     rol VARCHAR(20) NOT NULL,
     experto BOOLEAN NOT NULL,
@@ -30,6 +31,7 @@ CREATE TABLE Notificacion (
 CREATE TABLE Amigos (
     id_usuario INT NOT NULL,
     id_usuario_amigo INT NOT NULL,
+    favorito BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (id_usuario, id_usuario_amigo),
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario),
     FOREIGN KEY (id_usuario_amigo) REFERENCES Usuario(id_usuario)

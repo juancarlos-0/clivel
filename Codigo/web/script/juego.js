@@ -1,3 +1,7 @@
+// Variable para comprobar si ya existe el comentario para poder editarlo
+var booleanExisteComentario = false;
+
+// Cuando se cargue el documento
 $(document).ready(function () {
     // Captura el evento de escritura en el campo de búsqueda
     $('#buscar').on('input', function (event) {
@@ -41,7 +45,6 @@ $(document).ready(function () {
                                 event.preventDefault(); // Evita que la página se recargue
 
                                 // Acción que deseas realizar al hacer clic en el formulario
-                                // Puedes enviar el formulario de forma programática utilizando JavaScript
                                 formularioJuego[0].submit(); // Envía el formulario
                             });
 
@@ -112,7 +115,27 @@ $(document).ready(function () {
                     // Restablecer el formulario
                     $('#textareaValoracion').val('');
                     $('input[name="valoracion"]').prop('checked', false);
+                    // Si existe el comentario entonces avisa al usuario de que se ha editado con éxito
+                    if (booleanExisteComentario) {
+                        abrirModalEditarComentarioConfirmacion();
+                    } else {
+                        abrirModalAniadirComentarioConfirmacion();
+                    }
                     cerrarModal();
+
+                    // Restablecer el color de las valoraciones
+                    valoracionLabels.forEach(label => {
+                        label.classList.remove('selected');
+                    });
+
+                    // Cargar el comentario recién añadido
+                    var opcionPorDefecto = document.querySelector(".listaOpciones li:nth-child(2)");
+                    seleccionarOpcion(opcionPorDefecto);
+                    // Después de agregar el comentario se cambia el evento
+                    var contenedorComentario = document.getElementById("contenedorBotonFormulario");
+                    contenedorComentario.setAttribute("onclick", "abrirExisteComentario()");
+
+
                 },
                 error: function (xhr, status, error) {
                     // Manejar errores de la solicitud AJAX
@@ -143,6 +166,19 @@ function abrirModal() {
 function cerrarModal() {
     var modal = document.getElementById("miModal");
     modal.style.display = "none";
+
+    // Limpiar campos
+    let textarea = document.getElementById("textareaValoracion");
+    textarea.value = "";
+
+    // Deseleccionar opción de valoración existente
+    let valoracionExistente = document.querySelector(`input[name="valoracion"]:checked`);
+    if (valoracionExistente) {
+        valoracionExistente.checked = false;
+        valoracionExistente.parentElement.classList.remove('selected');
+    }
+    // boolean que comprueba si se va a editar el comentario
+    booleanExisteComentario = false;
 }
 
 // Función que abre la ventana modal que informa que no ha iniciado sesión
@@ -223,6 +259,12 @@ let mensajesMostrados = 6;
 // Primera opción seleccionada para comprobar si se selecciona otra
 let opcSeleccionada = "";
 
+// Variable para obtener el id de los comentarios
+var idValoracionModal = "";
+
+//Variables para el comentario y la valoracion para editar
+var comentarioEditar = "";
+var valoracionEditar = "";
 
 // Función que muestra la opción seleccionada
 function seleccionarOpcion(opcion) {
@@ -299,8 +341,50 @@ function seleccionarOpcion(opcion) {
                     iconoValoracion.classList.add('bi', 'bi-bandaid-fill');
                 }
 
-                headerComentario.appendChild(spanRecomendado);
-                headerComentario.appendChild(iconoValoracion);
+                // Agrupar comentario en un div
+                const divSecundarioHeader = document.createElement("div");
+                divSecundarioHeader.appendChild(spanRecomendado);
+                divSecundarioHeader.appendChild(iconoValoracion);
+
+                headerComentario.appendChild(divSecundarioHeader);
+
+                // Añadir boton que tiene la lista de opciones para el comentario
+                if (mensaje.id_usuario === parseInt(idUsuarioSesion)) {
+                    const botonOpciones = document.createElement('button');
+                    botonOpciones.id = "botonOpciones";
+                    botonOpciones.classList.add('bi', 'bi-three-dots');
+                    botonOpciones.onclick = function () {
+                        desplegableOpcionesComentarios();
+                    };
+                    headerComentario.appendChild(botonOpciones);
+
+                    // Lista de las opciones
+                    const listaOpciones = document.createElement('ul');
+                    listaOpciones.classList.add('listaOpcionesComentario');
+                    listaOpciones.id = "listaOpcionesComentario";
+
+                    const editarItem = document.createElement('li');
+                    editarItem.textContent = "Editar";
+                    editarItem.onclick = function () {
+                        opcionSeleccionadaComentarioUsuario(this);
+                    };
+                    listaOpciones.appendChild(editarItem);
+
+                    const borrarItem = document.createElement('li');
+                    borrarItem.textContent = "Borrar";
+                    borrarItem.onclick = function () {
+                        opcionSeleccionadaComentarioUsuario(this);
+                    };
+                    listaOpciones.appendChild(borrarItem);
+                    headerComentario.appendChild(listaOpciones);
+
+                    // Asignar a la varible global el id del comentario
+                    idValoracionModal = mensaje.id_valoracion;
+
+                    // Asignar a las variables de editar el contenido
+                    comentarioEditar = mensaje.comentario;
+                    valoracionEditar = mensaje.opinion;
+                }
 
                 // Body del contenedor
                 const bodyComentario = document.createElement('div');
@@ -372,7 +456,7 @@ function seleccionarOpcion(opcion) {
                 iconoPulgarAbajo.id = identificadorPulgarAbajo;
 
                 // Si existe usuario en la sesión se permite añadir likes
-                
+
                 if (parseInt(idUsuarioSesion) !== 0) {
                     botonPulgarArriba.addEventListener('click', () => {
                         compruebaLike(identificadorPulgarArriba, identificadorPulgarAbajo, mensaje.id_valoracion, idUsuario);
@@ -429,13 +513,11 @@ function seleccionarOpcion(opcion) {
                 botonCargarMas.classList.add('botonComentario');
                 botonCargarMas.id = 'botonCargarMas';
                 botonCargarMas.addEventListener('click', function () {
-                    // Lógica para cargar más mensajes al hacer clic en el botón
                     mensajesMostrados += 6; // Aumentar la cantidad de mensajes mostrados
 
                     // Volver a llamar a la función para cargar los mensajes con la nueva cantidad
-                    seleccionarOpcion(opcion); // Puedes pasar la opción seleccionada si es necesario
+                    seleccionarOpcion(opcion);
 
-                    // O realizar cualquier otra acción necesaria para cargar los mensajes adicionales
                 });
 
                 // Agregar el botón al contenedor
@@ -448,16 +530,10 @@ function seleccionarOpcion(opcion) {
                 }
             }
 
-
-
-
         } else if (xhr.readyState === 4 && xhr.status !== 200) {
             console.error('Error al cargar los mensajes:', xhr.status);
         }
     };
-
-
-
 
     xhr.open('GET', 'ajax/cargarValoraciones.jsp?idJuego=' + idJuego + '&idUsuarioSesion=' + idUsuarioSesion, true);
     xhr.send();
@@ -483,7 +559,6 @@ function attPulgarAbajo(botonPulgarAbajo) {
     botonPulgarAbajo.setAttribute('name', 'pulgarAbajo');
     botonPulgarAbajo.setAttribute('value', 'dislike');
 }
-var likeeeee = 0;
 
 //Función con ajax para agregar un like
 function darLike(idValoracion, idUsuario) {
@@ -633,4 +708,141 @@ function compruebaDislike(identificadorPulgarAbajo, identificadorPulgarArriba, i
         iPulgarAbajo.classList.remove('bi-hand-thumbs-down-fill');
         iPulgarAbajo.classList.add('bi-hand-thumbs-down');
     }
+}
+
+// Función que abre la lista de las opciones del comentario
+function desplegableOpcionesComentarios() {
+    var listaDesplegable = document.getElementById("listaOpcionesComentario");
+    var estaMostrando = listaDesplegable.classList.contains("mostrar");
+
+    if (estaMostrando) {
+        listaDesplegable.classList.remove("mostrar");
+    } else {
+        listaDesplegable.classList.add("mostrar");
+    }
+}
+
+// Función para cerrar la ventana modal del borrar el comentario
+function cerrarModalEliminarComentario() {
+    var modal = document.getElementById("modalEliminarComentario");
+    modal.style.display = "none";
+}
+
+// Función que abre la ventana modal que informa que no ha iniciado sesión
+function abrirModalEliminarComentario() {
+    // Cerrar también el primer desplegable de opciones
+    var listaDesplegable = document.getElementById("listaOpcionesComentario");
+    listaDesplegable.classList.remove("mostrar");
+    var modal = document.getElementById("modalEliminarComentario");
+    modal.style.display = "block";
+}
+
+// Función para la acción de la lista de la opción de los comentarios
+function opcionSeleccionadaComentarioUsuario(opcion) {
+    // Obtener la opción seleccionada
+    const textoOpcion = opcion.textContent;
+
+    if (textoOpcion === "Editar") {
+        editarComentario();
+    } else if (textoOpcion === "Borrar") {
+        abrirModalEliminarComentario();
+    }
+}
+
+// Función para eliminar el comentario
+function accionEliminarComentario() {
+    $.ajax({
+        url: 'ajax/eliminarComentario.jsp',
+        method: 'POST',
+        data: {
+            idValoracionModal: idValoracionModal
+        },
+        success: function (response) {
+            //Cerrar ventana modal del borrar mensaje
+            cerrarModalEliminarComentario();
+            // Si todo es correcto recargar nuevamente los comentarios
+            var opcionPorDefecto = document.querySelector(".listaOpciones li:first-child");
+            seleccionarOpcion(opcionPorDefecto);
+            //Mostrar modal de confirmacion de comentario eliminado
+            abrirModalEliminarComentarioConfirmacion();
+        },
+        error: function (error) {
+            // Manejo de errores
+            console.error('Error al eliminar el comentario', error);
+        }
+    });
+}
+
+// Función que abre la ventana modal que confirma que se a borrado el comentario
+function abrirModalEliminarComentarioConfirmacion() {
+    var modal = document.getElementById("modalConfirmarEliminarComentario");
+    modal.style.display = "block";
+
+    //Tiempo de la animación
+    setTimeout(function () {
+        modal.style.animation = "cerrarModalComentarioEliminadoConfirmacion 1s forwards";
+    }, 2000);
+
+    //Tiempo para quitar el modal
+    setTimeout(function () {
+        modal.style.display = "none";
+        modal.style.animation = "";
+    }, 3000);
+
+    // Después de agregar eliminar el comentario permitir que puede volver a agregarlo
+    var contenedorComentario = document.getElementById("contenedorBotonFormulario");
+    contenedorComentario.setAttribute("onclick", "abrirModal()");
+
+}
+
+// Función que abre la ventana modal que confirma que se a editado el comentario
+function abrirModalEditarComentarioConfirmacion() {
+    var modal = document.getElementById("modalConfirmarEditarComentario");
+    modal.style.display = "block";
+
+    //Tiempo de la animación
+    setTimeout(function () {
+        modal.style.animation = "cerrarModalComentarioEliminadoConfirmacion 1s forwards";
+    }, 2000);
+
+    //Tiempo para quitar el modal
+    setTimeout(function () {
+        modal.style.display = "none";
+        modal.style.animation = "";
+    }, 3000);
+
+}
+
+// Función que abre la ventana modal que confirma que se a añadido un comentario
+function abrirModalAniadirComentarioConfirmacion() {
+    var modal = document.getElementById("modalConfirmarAniadirComentario");
+    modal.style.display = "block";
+
+    //Tiempo de la animación
+    setTimeout(function () {
+        modal.style.animation = "cerrarModalComentarioEliminadoConfirmacion 1s forwards";
+    }, 2000);
+
+    //Tiempo para quitar el modal
+    setTimeout(function () {
+        modal.style.display = "none";
+        modal.style.animation = "";
+    }, 3000);
+
+}
+
+// Función para abrir la ventana modal del comentario para editar
+function editarComentario() {
+    //Añadir el texto que ya tenía el usuario añadido en el textarea
+    let textarea = document.getElementById("textareaValoracion");
+    textarea.value = comentarioEditar;
+
+    //Añadir la valoración que ya tenia el usuario
+    let valoracionExistente = document.querySelector(`input[name="valoracion"][value="${valoracionEditar}"]`);
+    if (valoracionExistente) {
+        valoracionExistente.checked = true;
+        valoracionExistente.parentElement.classList.add('selected');
+    }
+    booleanExisteComentario = true;
+    abrirModal();
 }

@@ -11,6 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="bootstrap5/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
         <link rel="stylesheet" href="estilos/juego.css"/>
@@ -259,7 +260,7 @@
 
                 <c:if test="${not empty sessionScope.datosUsuario}">
                     <c:if test="${existeValoracion}">
-                        <div class="contenedorBotonFormulario" onclick="abrirExisteComentario()">
+                        <div class="contenedorBotonFormulario" id="contenedorBotonFormulario" onclick="abrirExisteComentario()">
                             <div class="iconoMas">
                                 <p>+</p>
                             </div>
@@ -269,7 +270,7 @@
                         </div>
                     </c:if>
                     <c:if test="${!existeValoracion}">
-                        <div class="contenedorBotonFormulario" onclick="abrirModal()">
+                        <div class="contenedorBotonFormulario" id="contenedorBotonFormulario" onclick="abrirModal()">
                             <div class="iconoMas">
                                 <p>+</p>
                             </div>
@@ -280,7 +281,7 @@
                     </c:if>
                 </c:if>
                 <c:if test="${empty sessionScope.datosUsuario}">
-                    <div class="contenedorBotonFormulario" onclick="abrirModalFallo()">
+                    <div class="contenedorBotonFormulario" id="contenedorBotonFormulario" onclick="abrirModalFallo()">
                         <div class="iconoMas">
                             <p>+</p>
                         </div>
@@ -314,6 +315,7 @@
                     <!-- Ver las valoraciones -->
                     <div class="contenedorComentarioIndividual" id="contenedorComentarioIndividual" data-id-usuario="${sessionScope.datosUsuario != null ? sessionScope.datosUsuario.getId_usuario() : 0}">
                     </div>
+
                     <!-- Botón comentario individual -->
                     <div class="contenedorBotonVerMasComentario" id="contenedorBotonVerMasComentario">
 
@@ -381,6 +383,41 @@
             </div>
         </div>
 
+        <!-- Ventana modal eliminarComentario -->
+        <div id="modalEliminarComentario" class="modal">
+            <div class="modal-content">
+                <i class="bi bi-exclamation-circle"></i>
+                <p class="text-center">¿Desea borrar el comentario permanentemente?</p>
+                <div class="divModalEliminarComentario">
+                    <button onclick="accionEliminarComentario()" class="botonBorrarComentarioModal">Borrar</button>
+                    <button onclick="cerrarModalEliminarComentario()" class="botonCerrarComentarioModal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ventana modal confirma eliminar comentario -->
+        <div id="modalConfirmarEliminarComentario" class="modal">
+            <div class="modal-content">
+                <i class="bi bi-check-circle"></i>
+                <p class="text-center">Comentario eliminado con éxito</p>
+            </div>
+        </div>
+        
+        <!-- Ventana modal confirma editar comentario -->
+        <div id="modalConfirmarEditarComentario" class="modal">
+            <div class="modal-content">
+                <i class="bi bi-check-circle"></i>
+                <p class="text-center">Comentario editado con éxito</p>
+            </div>
+        </div>
+        
+        <!-- Ventana modal confirma añadir comentario -->
+        <div id="modalConfirmarAniadirComentario" class="modal">
+            <div class="modal-content">
+                <i class="bi bi-check-circle"></i>
+                <p class="text-center">Comentario añadido con éxito</p>
+            </div>
+        </div>
 
         <div id="resultadosBusqueda" style="display: none"></div>
         <script src="bootstrap5/js/bootstrap.bundle.min.js"></script>

@@ -43,8 +43,6 @@ public class Preparar_amigos extends HttpServlet {
 
             //funcion que devuelve las notificaciones
             funcionPrepararNotificacion(request);
-            //funcion que crea una lista con todos los amigos
-            preparaTodosAmigos(request);
             //Reenviar a la pagina de amigos
             request.getRequestDispatcher("amigos.jsp").forward(request, response);
             return;

@@ -9,7 +9,6 @@ document.getElementById('aplicarIconoMensaje').addEventListener('submit', functi
     console.log("Formulario enviado");
     // Prevenir que se recargue la página al enviar el formulario
     event.preventDefault();
-    alert("saklkasjf");
 
     // Obtener los valores de los campos de entrada
     var idUsuarioActual = document.querySelector('input[name="idUsuarioActual"]').value;

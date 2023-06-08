@@ -8,66 +8,260 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 
 
-/* Estilos del pie de página */
-footer {
-    text-align: center;
-    font-size: 14px;
-    margin-top: 50px;
+body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background-color: black;
+    color: white;
+    min-height: 568px;
 }
 
-footer p {
-    margin-bottom: 10px;
+/* DISEÑO DEL CONTENEDOR PRINCIPAL */
+
+.contenedorDeTodo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100vh;
+    background-color: black;
+    min-height: 568px;
 }
 
-footer a {
-    color: #1f1f1f;
-    text-decoration: none;
+/* DISEÑO  DEL CONTENEDOR IZQUIERDA */
+
+.contenedorIzquierda {
+    width: 400px;
+    height: 96%;
+    margin-top: 1%;
+    margin-left: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-footer a:hover {
-    text-decoration: underline;
+/* PARTE DE ARRIBA DEL CONTENEDOR IZQUIERDA */
+
+.parteDeArriba {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
 }
 
-/* Estilo de la lista de amigos */
-.chat-friends {
-    height: 400px;
-    overflow-y: scroll;
-    border: 1px solid #ccc;
-}
-/*Eliminar scroll*/
-
-.chat-friends::-webkit-scrollbar {
-    display: none;
-}
-.chat-friends:hover::-webkit-scrollbar {
-    display: none;
-}
-.chat-friends::-webkit-scrollbar-thumb {
-    background-color: #09C;
+.pda_izquierda {
+    background-color: hsla(0,0%,100%,.16);
+    width: 80%;
+    height: 100%;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.chat-box .card-body::-webkit-scrollbar {
-    display: none;
-}
-.chat-box .card-body:hover::-webkit-scrollbar {
-    display: none;
-}
-.chat-box .card-body::-webkit-scrollbar-thumb {
-    background-color: #09C;
+.imgYNombre {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    height: 48%;
+    justify-content: center;
 }
 
-/* Estilo del contenedor del chat */
-.chat-box {
-    border: 1px solid #ccc;
-    margin-top: 46.5px;
-    height: 400px;
+.pda_derecha {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.chat-box .card-body {
-    overflow-y: scroll;
+.pda_derechaArriba {
+    position: relative;
+    background-color: hsla(0,0%,100%,.16);
+    width: 90%;
+    height: 48%;
+    margin-left: 5%;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-.container {
-    margin-top: 10px;
+
+.pda_derechaAbajo {
+    width: 90%;
+    height: 50%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.iconosContenedorA {
+    width: 45%;
+    height: 45%;
+    background-color: hsla(0,0%,100%,.16);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconosContenedorB {
+    width: 45%;
+    height: 45%;
+    background-color: hsla(0,0%,100%,.16);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconosContenedorC {
+    width: 45%;
+    height: 45%;
+    background-color: hsla(0,0%,100%,.16);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.iconosContenedorD {
+    width: 45%;
+    height: 45%;
+    background-color: hsla(0,0%,100%,.16);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* DISEÑO DEL CONTENEDOR DE LA IZQUIERDA PARTE DE ABAJO */
+
+.parteDeAbajo {
+    width: 100%;
+    height: 79%;
+    background-color: hsla(0,0%,100%,.16);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenedorListaAmigos {
+    width: 100%;
+    height: 100%;
+}
+
+/* DISEÑO DEL CONTENEDOR DE LA DERECHA */
+
+.contenedorDerecha {
+    width: 1100px;
+    height: 96%;
+    margin-top: 1%;
+    margin-right: 1%;
+    background-color: #151515;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    margin-left: 0.5%;
+}
+
+.contenedorInfoAmigoSeleccionado {
+    width: 100%;
+    height: 9.6%;
+    background-color: hsla(0,0%,100%,.1);
+    border-radius: 6px 6px 0 0;
+    display: flex;
+    align-items: center;
+}
+
+.contenedorInfoAmigoSeleccionado img {
+    margin-left: 1%;
+}
+
+.contenedorMensajes {
+    width: 100%;
+    height: 80%;
+}
+
+.contenedorEnvioMensajes {
+    width: 100%;
+    height: 10.4%;
+    background-color: hsla(0,0%,100%,.1);
+    display: flex;
+    align-items: center;
+    border-radius: 0 0 6px 6px;
+}
+
+/* Estilo de los iconos */
+
+i {
+    color: white;
+}
+
+.bi {
+    font-size: 1em;
+}
+
+.bi-list {
+    font-size: 2em;
+}
+
+/* DISEÑO DE LA LISTA DE AMIGOS */
+
+.list-group-item {
+    background-color: hsla(0,0%,100%, 0.00000001);
+    color: white;
+    border: 0;
+}
+
+.list-group-item:hover {
+    background-color: #0F0F0F;
+    color: white;
+    border: 0;
+}
+
+/* DISEÑO DEL BUSCADOR */
+
+.contenedorBuscador {
+    height: 8%;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    background-color: hsla(0,0%,100%,.16);
+    padding: 5px;
+    width: 95%;
+}
+
+.buscador {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.buscador:focus {
+    outline: none;
+}
+
+.contenedorBuscador i {
+    margin-right: 5px;
+    margin-left: 15px;
+    color: #888;
+}
+
+.contenedorBuscador:hover {
+    background-color: white;
+}
+
+.contenedorBuscador:hover i{
+    color: black;
 }
 
 /* Estilo de los mensajes*/
@@ -80,113 +274,37 @@ footer a:hover {
 }
 
 .bocadillo-izquierda {
-    background-color: #dcf8c6;
+    background-color: #00C957;
     margin-right: auto;
 }
 
 .bocadillo-derecha {
-    background-color: #e4e4e4;
+    background-color: hsla(0,0%,100%,.16);
     margin-left: auto;
-}
-/* Estilo del desplegable de recomendaciones */
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    z-index: 1;
-    background-color: #f1f1f1;
-    width: 94%;
-    max-height: 115px;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-}
-
-.dropdown-menu li {
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-.dropdown-menu li:hover {
-    background-color: #ddd;
-}
-
-/* Estilo del mensaje de error de agregar y eliminar amigos */
-
-.estiloMensajeError {
-    color: red;
-    font-size: 10px;
-}
-
-/* Estilo lista amigos */
-
-#listaUsuarios:hover {
-    background-color: #ddd;
-    cursor: pointer;
-}
-
-/* tooltip para los amigos */
-
-#contenedorImgUsuario {
-    position: relative;
-    display: inline-block;
-}
-
-.tooltip {
-    position: absolute;
-    visibility: hidden;
-    top: 50%;
-    left: 110%; /* ajusta la distancia del tooltip a la derecha */
-    background-color: #f7f7f7;
-    color: black;
-    text-align: left;
-    padding: 15px;
-    border-radius: 10px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); /* para agregar sombra */
-    z-index: 999;
-    width: 250px;
-    font-family: Arial, sans-serif;
-    word-break: break-all;
-}
-
-.tooltip-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.tooltip-header img {
-    margin-right: 10px;
-}
-
-.tooltip-header h4 {
-    margin: 0;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-.tooltip-content {
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-#contenedorImgUsuario:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
 }
 
 /* Estilo del envio de mensajes */
 
 
-
 #inputEnvioMensaje {
     border-radius: 30px;
+    background-color: hsla(0,0%,100%,.16);
+    border: 0;
+}
+
+#inputEnvioMensaje:hover {
+    border-radius: 30px;
+    background-color: white;
+    border: 0;
 }
 
 #flechaEnvioMensaje {
-    border-radius: 30px;
+    border-radius: 50%;
     margin-left: 2px;
+}
+
+.card-footer {
+    width: 100%;
 }
 
 /* Imagen cuando no inicias sesion */
@@ -194,4 +312,704 @@ footer a:hover {
 #imagenNoSesion {
     width: 800px;
     border-radius: 3px;
+}
+
+/* Estilo de la lista de amigos */
+.chat-friends {
+    height: 400px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+}
+
+/*Eliminar scroll*/
+
+.chat-friends::-webkit-scrollbar {
+    display: none;
+}
+.chat-friends:hover::-webkit-scrollbar {
+    display: none;
+}
+.chat-friends::-webkit-scrollbar-thumb {
+    background-color: #09C;
+}
+
+.card-body::-webkit-scrollbar {
+    display: none;
+}
+.card-body:hover::-webkit-scrollbar {
+    display: none;
+}
+.card-body::-webkit-scrollbar-thumb {
+    background-color: #09C;
+}
+
+/* Estilo del contenedor del chat */
+.card-body {
+    height: 100%;
+}
+
+.card-body {
+    overflow-y: scroll;
+}
+.container {
+    margin-top: 10px;
+}
+
+/* QUITAR DECORACION DE LOS BOTONES */
+
+button {
+    text-decoration: none !important;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+/* AGREGAR DISEÑO A LOS BOTONES CON ICONOS */
+
+.pda_derechaArriba:hover i{
+    color: black;
+}
+.pda_derechaArriba:hover {
+    background: white;
+}
+
+.pda_derechaAbajo div:hover {
+    background: white;
+}
+
+.pda_derechaAbajo div:hover .bi-plus-circle{
+    color: #007bff ;
+}
+
+.pda_derechaAbajo div:hover .bi-dash-lg{
+    color: #ff0000;
+}
+
+.pda_derechaAbajo div:hover .bi-bell{
+    color: #ff8000;
+}
+
+.pda_derechaAbajo div:hover .bi-star{
+    color: #ffd700;
+}
+
+/* LISTA DE OPCIONES DEL BOTON CON ANIMACION */
+
+.listaOpciones {
+    position: absolute;
+    top: 105%;
+    left: 0;
+    width: 160px;
+    display: none;
+    background-color: #ffffff;
+    color: black;
+    padding: 10px;
+    margin: 0;
+    border-radius: 4px;
+    animation: desplegarAnimacion 0.3s ease;
+    z-index: 999;
+    text-decoration: none;
+    cursor: pointer;
+    list-style: none;
+}
+
+@keyframes desplegarAnimacion {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.listaOpciones.mostrar {
+    display: block;
+}
+
+/* DISEÑO DE LOS ENLACES */
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Estilos para la ventana modal */
+.modal {
+    position: relative;
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    border-radius: 6px;
+}
+
+.modal-content {
+    position: relative;
+    background-color: black;
+    color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 0;
+    border-radius: 4px;
+    width: 400px;
+    transform: translateY(-100%);
+    animation: modal-animacion 0.3s ease forwards;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    background-color: #ddd;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modalBotonCerrarFallo {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.modalBotonCerrarFallo:hover,
+.modalBotonCerrarFallo:focus {
+    background-color: #ddd;
+    color: #333;
+}
+
+
+@keyframes modal-animacion {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ESTILO DEL MODAL DE LAS NOTIFICACIONES */
+
+.modalNotificaciones {
+    position: relative;
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    border-radius: 6px;
+}
+
+.modal-content-notificaciones {
+    position: relative;
+    background-color: black;
+    color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 0;
+    border-radius: 4px;
+    width: 420px;
+    transform: translateY(-100%);
+    animation: modal-animacion 0.3s ease forwards;
+}
+
+.cuerpoNotificaciones {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+}
+
+.cuerpoNotificaciones div {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.cuerpoNotificaciones i {
+    margin-right: 10px;
+}
+
+.agregarPNotificaciones {
+    margin: 0;
+}
+
+.botonModalNotificaciones {
+    background-color: grey;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botonModalNotificaciones:hover {
+    background-color: white;
+    color: black;
+}
+
+
+.lineaSeparadora {
+    border: 0;
+    border-top: 1px solid white;
+    margin: 10px 0;
+}
+
+.opcionesNotificaciones {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.opcionesNotificaciones span {
+    margin-right: 5px;
+}
+
+.opcionesNotificaciones button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.opcionesNotificaciones button:hover {
+    color: blue;
+}
+
+/* ESTILO LISTA MODAL NOTIFICACIONES USUARIO */
+
+.aceptarSolicitudes {
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+
+.aceptarSolicitudes::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 6px;
+}
+
+.aceptarSolicitudes::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 6px;
+}
+
+.aceptarSolicitudes::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 6px;
+}
+
+.aceptarSolicitudes::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    border-radius: 6px;
+}
+
+.contenedorInfoSolicitante {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.infoSolicitanteIzquierda {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80%;
+}
+
+.infoSolicitanteIzquierda span {
+    margin-left: 14px;
+}
+
+.infoSolicitanteIzquierda img {
+    width: 49px;
+    height: 49px;
+    border-radius: 50%;
+    background-color: #555;
+}
+
+.infoSolicitanteDerecha {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 20%;
+}
+
+.infoSolicitanteDerechaAceptadas {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 20%;
+}
+
+.bi-check-lg {
+    color: #00C957;
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.bi-x-lg {
+    color: #FF0000;
+    font-size: 1.4em;
+    margin: 0;
+}
+
+.bi-check {
+    color: #00C957;
+}
+
+/* ESTILO MODAL CONTENIDO */
+.modal-content i {
+    font-size: 3em;
+    margin: 0;
+}
+
+.modal-content p {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+.modal-content input {
+    outline: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    margin-top: 15px;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+
+    border: 0;
+}
+
+.divModalEliminarComentario {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.botonAgregarAmigoModal,
+.botonCerrarComentarioModal {
+    width: 48%;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.botonAgregarAmigoModal {
+    background-color: blue;
+    color: white;
+}
+
+.botonCerrarComentarioModal {
+    background-color: gray;
+    color: white;
+}
+
+.botonBorrarComentarioModal:hover,
+.botonCerrarComentarioModal:hover {
+    background-color: darkred;
+}
+
+.cuerpo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cuerpo p {
+    margin-left: 12px;
+}
+
+.cuerpo .agregarP {
+    color: white;
+    padding: 0;
+    margin: 0;
+    line-height: 0;
+    margin-left: 12px;
+}
+
+.cuerpo .bi-plus-circle {
+    color: blue;
+}
+
+.cuerpo .bi-dash-lg {
+    color: red;
+}
+
+.cuerpo .bi-bell {
+    color: yellow;
+}
+
+/* DISEÑO DE LA LISTA DE RESULTADOS */
+
+/* contenedor del input con la lista de resultados */
+.input-container {
+    position: relative;
+}
+
+/* lista de resultados de amigos modal */
+.listaResultados {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    max-height: 150px;
+    background-color: #ffffff;
+    color: black;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    overflow-y: auto;
+    margin-top: 3px;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+/* Scroll de la lista de usuarios del modal agregar amigos*/
+
+.listaResultados::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 6px;
+}
+
+.listaResultados::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 6px;
+}
+
+.listaResultados::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 6px;
+}
+
+.listaResultados::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    border-radius: 6px;
+}
+
+
+/* li de la lista de resultados modal */
+.listaResultados li {
+    margin: 0;
+    padding: 5px;
+    cursor: pointer;
+    list-style: none;
+    border-bottom: 1px solid black;
+}
+
+.listaResultados li:hover {
+    background-color: #e0e0e0;
+}
+
+.listaResultados:empty {
+    display: none;
+}
+
+/* ESTILO DE LAS FOTOS DEL USUARIO Y NOMBRE EN LA LISTA DE ANIADIR */
+
+.foto-usuario {
+    width: 49px;
+    height: 49px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.nombre-usuario {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 49px;
+}
+
+/* ESTILO DEL MODAL MODO CONCENTRACION */
+
+.modoConcentracion {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: background-color 0.3s;
+}
+
+/* ESTILO GENERAL DE LA VENTANA MODAL TEMPORAL */
+
+.modalTemporal div{
+    text-align: center;
+}
+
+#modalConfirmaSolicitudAmigo div i {
+    color: blue;
+}
+
+/* MEDIA PARA CUANDO SE REDUCE EL ANCHO */
+
+@media (max-width: 1150px) {
+    .parteDeArriba {
+        height: 30%;
+        flex-direction: column;
+    }
+    .imgYNombre {
+        height: 38%;
+    }
+    .parteDeAbajo {
+        height: 70%;
+    }
+    .pda_derecha {
+        flex-direction: row;
+    }
+    .pda_izquierda {
+        height: 80%;
+        width: 100%;
+    }
+
+    .pda_derecha {
+        height: 20%;
+        width: 100%;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .pda_derechaArriba {
+        height: 80%;
+        width: 18%;
+        margin: 0;
+    }
+
+    .bi-list {
+        font-size: 1.7em;
+    }
+
+    .pda_derechaAbajo {
+        height: 80%;
+        width: 80%;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    .iconosContenedorA {
+        height: 100%;
+        width: 20%;
+    }
+    .iconosContenedorB {
+        height: 100%;
+        width: 20%;
+    }
+    .iconosContenedorC {
+        height: 100%;
+        width: 20%;
+    }
+    .iconosContenedorD {
+        height: 100%;
+        width: 20%;
+    }
+
+    .listaOpciones {
+        top: 115%;
+    }
+}
+
+/* SEGUNDA MEDIA PARA EL ANCHO */
+
+@media (max-width: 720px) {
+    .contenedorDeTodo {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: auto;
+        background-color: black;
+    }
+
+    .contenedorIzquierda {
+        width: 100%;
+        margin: 0;
+    }
+
+    .contenedorDerecha {
+        width: 100%;
+        margin: 6px 0;
+        height: 600px;
+    }
+
+    .parteDeArriba {
+        width: 100%;
+    }
+
+    .parteDeAbajo {
+        width: 100%;
+        height: 400px;
+    }
+
+    .contenedorListaAmigos {
+        width: 100%;
+    }
+
+    .pda_izquierda {
+        width: 100%;
+        height: 240px;
+    }
+
+    .pda_derecha {
+        width: 100%;
+        height: 60px;
+    }
+
+    .parteDeAbajo {
+        width: 100%;
+    }
+
+    .pda_derechaAbajo {
+        margin-right: 1%;
+    }
+
+    .pda_derechaArriba {
+        margin-left: 1%;
+        width: 16.8%;
+    }
+
+    .contenedorInfoAmigoSeleccionado {
+        height: 80px;
+    }
+
+    .contenedorInfoAmigoSeleccionado img {
+        margin-left: 3%;
+    }
 }

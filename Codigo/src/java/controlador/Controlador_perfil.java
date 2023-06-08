@@ -55,6 +55,7 @@ public class Controlador_perfil extends HttpServlet {
             //Obtener botones de envío
             String botonCambiarDatos = request.getParameter("cambiarDatos");
             String botonCambiarFoto = request.getParameter("cambiarFoto");
+            String botonCambiarFondo = request.getParameter("cambiarFondo");
 
             // Obtener la sesion
             HttpSession session = request.getSession(false);
@@ -115,7 +116,7 @@ public class Controlador_perfil extends HttpServlet {
                 }
             }
 
-            if (botonCambiarDatos == null) {
+            if (botonCambiarFoto != null) {
                 // Obtener el usuario de la sesión
                 Usuario objetoSesion = (Usuario) session.getAttribute("datosUsuario");
 
@@ -142,6 +143,43 @@ public class Controlador_perfil extends HttpServlet {
                 //Guardar la ruta de la foto en la BD
                 UsuarioModeloDAO umDAO = new UsuarioModeloDAO();
                 umDAO.subirFoto(objetoSesion.getId_usuario(), "img/usuarios/" + nombreDeFichero);
+                umDAO.cerrarConexion();
+                //Establecer nuevamente el objeto con la nueva ruta
+                objetoSesion.setFoto("img/usuarios/" + nombreDeFichero);
+                request.setAttribute("datosUsuario", objetoSesion);
+
+                //Redirigir nuevamente al login
+                request.getRequestDispatcher("perfil.jsp").forward(request, response);
+                return;
+            }
+            
+            if (botonCambiarFondo != null) {
+                // Obtener el usuario de la sesión
+                Usuario objetoSesion = (Usuario) session.getAttribute("datosUsuario");
+
+                //Obtener la imagen mediante una Part
+                Part parteFichero = request.getPart("fondo-perfil");
+                //Obtener el nombre del fichero
+                String nombreFichero = parteFichero.getSubmittedFileName();
+                //Obtener la extensión del fichero
+                String extensionFichero = nombreFichero.substring(nombreFichero.lastIndexOf("."));
+                //Crear ubicación para el fichero
+                String ubicacion = getServletContext().getRealPath("/img/fondo/");
+                //Nombre único para el fichero con el nombre del usuario
+                String nombreDeFichero = objetoSesion.getUsuario() + extensionFichero;
+                //Obtener la ruta de destino
+                String rutaDestino = ubicacion + File.separator + (objetoSesion.getUsuario() + extensionFichero);
+                Path rutaArchivo = Paths.get(rutaDestino);
+
+                // Verificar si el archivo existe y eliminarlo si es necesario
+                if (Files.exists(rutaArchivo)) {
+                    Files.delete(rutaArchivo);
+                }
+                
+                Files.copy(parteFichero.getInputStream(), Paths.get(ubicacion, nombreDeFichero));
+                //Guardar la ruta de la foto en la BD
+                UsuarioModeloDAO umDAO = new UsuarioModeloDAO();
+                umDAO.subirFondo(objetoSesion.getId_usuario(), "img/fondo/" + nombreDeFichero);
                 umDAO.cerrarConexion();
                 //Establecer nuevamente el objeto con la nueva ruta
                 objetoSesion.setFoto("img/usuarios/" + nombreDeFichero);

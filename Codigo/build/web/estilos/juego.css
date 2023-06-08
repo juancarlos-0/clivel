@@ -766,7 +766,7 @@ body {
 .contenedorComentarioIndividual {
     width: 100%;
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
 }
 
 .seccionesComentarioIndividual {
@@ -788,6 +788,7 @@ body {
     font-size: 24px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .headerComentarioIndividual i {
@@ -986,4 +987,108 @@ body {
 
 .listaOpciones.mostrar {
     display: block;
+}
+
+/* Boton de las opciones de las valoraciones */
+
+#botonOpciones {
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    outline: none;
+}
+
+.bi-three-dots {
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+}
+
+/* Lista de las opciones del comentario */
+
+.headerComentarioIndividual {
+    position: relative;
+}
+
+.listaOpcionesComentario {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 80px;
+    display: none;
+    background-color: #ffffff;
+    color: black;
+    padding: 10px;
+    margin: 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    animation: desplegarAnimacion 0.3s ease;
+    z-index: 999;
+    text-decoration: none;
+    cursor: pointer;
+    list-style: none;
+    font-size: 14px;
+}
+
+.listaOpcionesComentario.mostrar {
+    display: block;
+}
+
+/* Botones de la ventana modal para borrar el comentario */
+
+.divModalEliminarComentario {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.divModalEliminarComentario button {
+    width: 120px;
+    height: 40px;
+    border: 0;
+    border-radius: 4px;
+}
+
+.botonBorrarComentarioModal {
+    background-color: rgba(57, 167, 142, 1);
+    transition: background-color 0.3s;
+}
+
+.botonBorrarComentarioModal:hover {
+    background-color: rgba(57, 167, 142, 0.8);
+}
+
+.botonCerrarComentarioModal {
+    background-color: rgba(214, 69, 80, 1);
+    transition: background-color 0.3s;
+}
+
+.botonCerrarComentarioModal:hover {
+    background-color: rgba(214, 69, 80, 0.8);
+}
+
+/* Exclamación de la ventana modal de borrar el comentario */
+
+.bi-exclamation-circle {
+    color: red;
+    font-size: 30px;
+    text-align: center;
+}
+
+/* Icono confirmacion comentario eliminado */
+
+.bi-check-circle {
+    color: #39A78E;
+    font-size: 30px;
+    text-align: center;
+}
+
+/* Cerrar la ventana de confirmación comentario eliminado */
+@keyframes cerrarModalComentarioEliminadoConfirmacion {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
 }

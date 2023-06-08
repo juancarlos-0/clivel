@@ -12,13 +12,15 @@ public class Amigos {
     
     private int id_usuario;
     private int id_usuario_amigo;
+    private boolean favorito;
 
     public Amigos() {
     }
 
-    public Amigos(int id_usuario, int id_usuario_amigo) {
+    public Amigos(int id_usuario, int id_usuario_amigo, boolean favorito) {
         this.id_usuario = id_usuario;
         this.id_usuario_amigo = id_usuario_amigo;
+        this.favorito = favorito;
     }
 
     public int getId_usuario() {
@@ -36,6 +38,15 @@ public class Amigos {
     public void setId_usuario_amigo(int id_usuario_amigo) {
         this.id_usuario_amigo = id_usuario_amigo;
     }
+
+    public boolean isFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(boolean favorito) {
+        this.favorito = favorito;
+    }
+    
     
     
 }

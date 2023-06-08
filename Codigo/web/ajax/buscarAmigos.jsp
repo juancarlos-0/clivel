@@ -4,6 +4,7 @@
     Author     : Juancarlos
 --%>
 
+<%@page import="modelo.Usuario"%>
 <%@page import="com.google.gson.Gson"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
@@ -12,22 +13,42 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%
-    String query = request.getParameter("query");
-    String output = "";
+    String nombreUsuario = request.getParameter("nombreAmigo");
+    String usuarioSesion = request.getParameter("usuarioNombre");
     Connection conn = null;
     PreparedStatement pstmt = null;
     ResultSet rs = null;
     try {
         Class.forName("com.mysql.jdbc.Driver");
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/clivel", "root", "");
-        pstmt = conn.prepareStatement("SELECT * FROM usuario WHERE usuario LIKE ? AND rol NOT LIKE 'admin'");
-        pstmt.setString(1, "%" + query + "%");
+        // Obtener el ID del usuario de sesión
+        int idUsuarioSesion = 0;
+        pstmt = conn.prepareStatement("SELECT id_usuario FROM usuario WHERE usuario = ?");
+        pstmt.setString(1, usuarioSesion);
         rs = pstmt.executeQuery();
-        List<Map<String, String>> usuarios = new ArrayList<>();
-        while (rs.next() && !query.isBlank()) {
-            Map<String, String> usuario = new HashMap<>();
-            usuario.put("nombre", rs.getString("usuario"));
-            usuarios.add(usuario);
+
+        if (rs.next()) {
+            idUsuarioSesion = rs.getInt("id_usuario");
+        }
+
+        // Consulta principal para obtener los usuarios
+        pstmt = conn.prepareStatement("SELECT * FROM usuario WHERE usuario LIKE ? AND id_usuario NOT IN (SELECT id_usuario_amigo FROM amigos WHERE id_usuario = ?) AND id_usuario NOT IN (SELECT id_usuario FROM amigos WHERE id_usuario_amigo = ?) AND rol != 'admin'");
+        pstmt.setString(1, "%" + nombreUsuario + "%");
+        pstmt.setInt(2, idUsuarioSesion);
+        pstmt.setInt(3, idUsuarioSesion);
+        rs = pstmt.executeQuery();
+
+        List<Usuario> usuarios = new ArrayList<>();
+        while (rs.next() && !nombreUsuario.isBlank()) {
+            if (!rs.getString("usuario").trim().equals(usuarioSesion)) {
+                Usuario usuario = new Usuario();
+                usuario.setUsuario(rs.getString("usuario"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setFoto(rs.getString("foto"));
+                usuario.setApellidos(rs.getString("apellidos"));
+                usuario.setDescripcion(rs.getString("descripcion"));
+                usuarios.add(usuario);
+            }
         }
         out.print(new Gson().toJson(usuarios));
     } catch (Exception e) {
@@ -43,5 +64,6 @@
             conn.close();
         }
     }
-    out.print(output);
+
 %>
+

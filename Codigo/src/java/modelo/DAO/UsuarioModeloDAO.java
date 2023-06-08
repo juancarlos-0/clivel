@@ -127,6 +127,7 @@ public class UsuarioModeloDAO {
                 usuarioDatos.setCorreo(resultSet.getString("correo"));
                 usuarioDatos.setFecha_nacimiento(resultSet.getDate("fecha_nacimiento"));
                 usuarioDatos.setFoto(resultSet.getString("foto"));
+                usuarioDatos.setFondo(resultSet.getString("fondo"));
                 usuarioDatos.setDescripcion(resultSet.getString("descripcion"));
                 usuarioDatos.setRol(resultSet.getString("rol"));
                 usuarioDatos.setExperto(resultSet.getBoolean("experto"));
@@ -222,14 +223,33 @@ public class UsuarioModeloDAO {
             String sql = "UPDATE usuario SET foto = ? WHERE id_usuario = ?";
             PreparedStatement statement = conexion.prepareStatement(sql);
 
-            System.out.println("ssssssssss");
             // Establecer los parámetros de la sentencia SQL
             statement.setString(1, rutaFoto);
             statement.setInt(2, idUsuario);
 
             // Ejecutar la sentencia SQL
             int filasActualizadas = statement.executeUpdate();
-            System.out.println("asdkfjaskfldjkljkjkkjklkdjklsjkf");
+
+            return filasActualizadas > 0; // Indicar si la foto se actualizó correctamente
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    //Método para subir un fondo
+    public boolean subirFondo(int idUsuario, String rutaFondo) {
+        try {
+            // Preparar la sentencia SQL para actualizar la foto del usuario
+            String sql = "UPDATE usuario SET fondo = ? WHERE id_usuario = ?";
+            PreparedStatement statement = conexion.prepareStatement(sql);
+
+            // Establecer los parámetros de la sentencia SQL
+            statement.setString(1, rutaFondo);
+            statement.setInt(2, idUsuario);
+
+            // Ejecutar la sentencia SQL
+            int filasActualizadas = statement.executeUpdate();
 
             return filasActualizadas > 0; // Indicar si la foto se actualizó correctamente
         } catch (SQLException e) {

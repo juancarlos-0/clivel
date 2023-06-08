@@ -18,14 +18,16 @@
         int idUsuarioSesion = Integer.parseInt(request.getParameter("idUsuarioSesion"));
 
         // Preparar la consulta parametrizada
+        // Preparar la consulta parametrizada
         String consulta = "SELECT v.id_valoracion, v.id_juego, v.id_usuario, v.comentario, v.opinion, v.fecha_valoracion, u.foto, u.usuario, "
                 + "(SELECT COUNT(*) FROM like_ WHERE id_valoracion = v.id_valoracion AND opinion = 'like') AS likes, "
                 + "(SELECT COUNT(*) FROM like_ WHERE id_valoracion = v.id_valoracion AND opinion = 'dislike') AS dislikes, "
                 + "l.id_like, "
-                + "(SELECT COALESCE((SELECT opinion FROM like_ WHERE id_valoracion = v.id_valoracion AND id_usuario = ?), '')) AS opinionsesion "
+                + "(SELECT COALESCE(opinion, '') FROM like_ WHERE id_valoracion = v.id_valoracion AND id_usuario = ?) AS opinionsesion "
                 + "FROM valoracion v INNER JOIN usuario u ON v.id_usuario = u.id_usuario "
                 + "LEFT JOIN like_ l ON v.id_valoracion = l.id_valoracion "
-                + "WHERE v.id_juego = ?";
+                + "WHERE v.id_juego = ? "
+                + "GROUP BY v.id_valoracion";
 
         PreparedStatement statement = conexion.prepareStatement(consulta);
         statement.setObject(1, idUsuarioSesion != 0 ? idUsuarioSesion : null); // Maneja el caso cuando idUsuarioSesion es 0 o nulo

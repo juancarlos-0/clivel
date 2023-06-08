@@ -12,13 +12,13 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Juancarlos/Documents/NetBeansProjects/repaso/clivel/web/script/amigos.js</file>
             <file>file:/C:/Users/Juancarlos/Documents/NetBeansProjects/repaso/clivel/web/juego.jsp</file>
+            <file>file:/C:/Users/Juancarlos/Documents/NetBeansProjects/repaso/clivel/web/ajax/agregarAmigos.jsp</file>
             <file>file:/C:/Users/Juancarlos/Documents/NetBeansProjects/repaso/clivel/web/script/juego.js</file>
-            <file>file:/C:/Users/Juancarlos/Documents/NetBeansProjects/repaso/clivel/web/ajax/comprobarLike.jsp</file>
-            <file>file:/C:/Users/Juancarlos/Documents/NetBeansProjects/repaso/clivel/web/estilos/juego.css</file>
-            <file>file:/C:/Users/Juancarlos/Documents/NetBeansProjects/repaso/clivel/web/ajax/cargarValoraciones.jsp</file>
-            <file>file:/C:/Users/Juancarlos/Documents/NetBeansProjects/repaso/clivel/src/java/modelo/Valoracion.java</file>
-            <file>file:/C:/Users/Juancarlos/Documents/NetBeansProjects/repaso/clivel/web/ajax/manejarLikes.jsp</file>
+            <file>file:/C:/Users/Juancarlos/Documents/NetBeansProjects/repaso/clivel/web/estilos/estiloAmigos.css</file>
+            <file>file:/C:/Users/Juancarlos/Documents/NetBeansProjects/repaso/clivel/web/amigos.jsp</file>
+            <file>file:/C:/Users/Juancarlos/Documents/NetBeansProjects/repaso/clivel/web/ajax/buscarAmigos.jsp</file>
         </group>
     </open-files>
 </project-private>
