@@ -1,0 +1,232 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 8 jun 2023, 19:43:19
+    Author     : Juancarlos
+*/
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #1e1e1e;
+    color: white;
+}
+
+/* Quitar estilo al dropdown( foto de usuario ) */
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+/* ESTILO DEL NAV PRINCIPAL */
+
+.navPrincipal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 10px;
+    background-color: #0c0c0c;
+}
+
+.navPrincipal div img {
+    background-color: white;
+}
+
+.navPrincipal > div {
+    flex: 1;
+}
+
+.navPrincipal > div:first-child {
+    text-align: left;
+}
+
+.navPrincipal > div:nth-child(2) {
+    text-align: center;
+}
+
+.navPrincipal > div:last-child {
+    text-align: right;
+}
+
+.navPrincipal ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navPrincipal li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.navPrincipal a {
+    text-decoration: none;
+    color: white;
+}
+
+.navPrincipal a:hover {
+    color: #f00;
+}
+
+.palabraIcono {
+    margin-left: 4px;
+}
+
+/* NAVBAR SECUNDARIO */
+
+.navSecundario {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    background-color: #0c0c0c;
+    border-radius: 80px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 60px;
+}
+
+.navButton {
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #0c0c0c;
+    color: white;
+}
+
+.navButton:hover {
+    color: blue;
+}
+
+.navButton i {
+    margin-right: 8px;
+}
+
+.navButton span {
+    font-size: 14px;
+}
+
+/* ESTILOS DE LOS DATATABLES */
+
+#tablaUsuarios_wrapper {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+#tablaUsuarios_wrapper .dataTables_length label,
+#tablaUsuarios_wrapper .dataTables_filter label,
+#tablaUsuarios_wrapper .dataTables_info,
+#tablaUsuarios_wrapper .dataTables_paginate .paginate_button {
+    color: #ffffff;
+}
+
+#tablaUsuarios thead th {
+    background-color: #2c2c2c;
+    border-color: #ffffff;
+    color: #ffffff; /* Color del texto del encabezado */
+}
+
+#tablaUsuarios tbody td {
+    border-color: #ffffff;
+    color: #ffffff; /* Color del texto de las celdas */
+}
+
+#tablaUsuarios tbody tr:nth-child(odd) {
+    background-color: #292929;
+}
+
+#tablaUsuarios tbody tr:hover {
+    background-color: #3d3d3d;
+}
+
+#tablaUsuarios_length label,
+#tablaUsuarios_filter label,
+#tablaUsuarios_paginate .pagination .page-item .page-link {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+#tablaUsuarios_length label select,
+#tablaUsuarios_filter label input[type="search"],
+#tablaUsuarios_paginate .pagination .page-item .page-link {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+#tablaUsuarios_paginate .pagination .page-item .page-link:hover,
+#tablaUsuarios_paginate .pagination .page-item .page-link:focus {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+#tablaUsuarios_paginate .pagination .page-item.active .page-link {
+    background-color: #3d3d3d;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+/* ESTILO DEL SCROLL */
+
+body::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 6px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 6px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 6px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    border-radius: 6px;
+}
+
+/* ESTILO DEL EXTRA DE CADA FILA */
+
+.detalle {
+    background-color: #f2f2f2;
+    width: 100%;
+}
+
+.detalle-container {
+    text-align: center;
+    width: 100%;
+}
+
+.detalle-titulo {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.detalle-info p {
+    text-align: left;
+    margin: 5px 0;
+}
+
+.detalle-info {
+    width: 100%;
+    text-align: left;
+}
+
+
+@media (max-width: 700px) {
+    .palabraIcono {
+        display: none;
+    }
+}
