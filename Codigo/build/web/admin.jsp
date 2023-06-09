@@ -68,6 +68,76 @@
             </table>
         </div>
 
+        <div class="modal fade dark-modal" id="editarUsuarioModal" tabindex="-1" aria-labelledby="editarUsuarioModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editarUsuarioModalLabel">Editar Usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="editarUsuarioID" class="form-label">ID</label>
+                            <input type="text" class="form-control" id="editarUsuarioID" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editarUsuarioUsuario" class="form-label">Usuario</label>
+                            <input type="text" class="form-control" id="editarUsuarioUsuario">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editarUsuarioNombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="editarUsuarioNombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editarUsuarioApellidos" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="editarUsuarioApellidos">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editarUsuarioCorreo" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="editarUsuarioCorreo">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editarUsuarioFoto" class="form-label">Foto</label>
+                            <input type="text" class="form-control" id="editarUsuarioFoto">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editarUsuarioDescripcion" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="editarUsuarioDescripcion"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editarUsuarioRol" class="form-label">Rol</label>
+                            <input type="text" class="form-control" id="editarUsuarioRol">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Editar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade dark-modal" id="eliminarUsuarioModal" tabindex="-1" aria-labelledby="eliminarUsuarioModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="eliminarUsuarioModalLabel">Confirmar eliminación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Desea eliminar al usuario <span id="usuarioEliminar"></span>?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="eliminarUsuarioBtn">Eliminar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
 
         <!-- bootstrap5 -->
         <script src="bootstrap5/js/bootstrap.bundle.min.js"></script>

@@ -1,0 +1,10 @@
+.ContenedorImagen {
+    max-width: 60%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.img {
+    max-width: 100%;
+    height: auto;
+} 

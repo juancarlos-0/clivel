@@ -224,6 +224,40 @@ body::-webkit-scrollbar-thumb:hover {
     text-align: left;
 }
 
+/* ESTILO MODAL OSCURO */
+
+.dark-modal .modal-content {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-modal .modal-header {
+    background-color: #222;
+}
+
+.dark-modal .modal-title {
+    color: #fff;
+}
+
+.dark-modal .modal-footer {
+    background-color: #222;
+}
+
+.dark-modal .modal-body input[type="text"],
+.dark-modal .modal-body input[type="email"],
+.dark-modal .modal-body textarea,
+.dark-modal .modal-body .btn-primary,
+.dark-modal .modal-body .btn-secondary {
+    background-color: #555;
+    color: #fff;
+    border-color: #555;
+}
+
+.dark-modal .modal-body input[type="text"]::placeholder,
+.dark-modal .modal-body input[type="email"]::placeholder,
+.dark-modal .modal-body textarea::placeholder {
+    color: #aaa;
+}
 
 @media (max-width: 700px) {
     .palabraIcono {
