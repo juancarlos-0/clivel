@@ -24,6 +24,8 @@ public class Valoracion {
     private int dislikes;
     private int id_like;
     private String opinionSesion;
+    private String nombre_juego;
+    private String nombre_usuario;
 
     public Valoracion() {
     }
@@ -138,5 +140,31 @@ public class Valoracion {
     public void setIdUsuarioSesion(String opinionSesion) {
         this.opinionSesion = opinionSesion;
     }
+
+    public String getOpinionSesion() {
+        return opinionSesion;
+    }
+
+    public void setOpinionSesion(String opinionSesion) {
+        this.opinionSesion = opinionSesion;
+    }
+
+    public String getNombre_juego() {
+        return nombre_juego;
+    }
+
+    public void setNombre_juego(String nombre_juego) {
+        this.nombre_juego = nombre_juego;
+    }
+
+    public String getNombre_usuario() {
+        return nombre_usuario;
+    }
+
+    public void setNombre_usuario(String nombre_usuario) {
+        this.nombre_usuario = nombre_usuario;
+    }
+    
+    
     
 }

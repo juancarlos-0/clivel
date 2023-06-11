@@ -258,13 +258,15 @@ public class ControladorJuegos extends HttpServlet {
                     // Comprobar si el id de rawg existe en la base de datos, sino insertarlo
                     Juego j = new Juego();
                     j.setId_juego(Integer.parseInt(pkJuego));
+                    j.setNombre(nombreJuego);
+                    j.setFechaLanzamiento(fechaDeLanzamiento);
 
                     JuegoDAO jDAO = new JuegoDAO();
                     boolean existeJuego = jDAO.compruebaID(j.getId_juego());
 
                     //sino existe insertar el id del juego
                     if (!existeJuego) {
-                        jDAO.agregarID(j.getId_juego());
+                        jDAO.agregarID(j.getId_juego(), j.getNombre(), j.getFechaLanzamiento());
                     }
 
                     jDAO.cerrarConexion();

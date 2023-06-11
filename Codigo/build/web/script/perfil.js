@@ -81,7 +81,7 @@ function validarContra () {
 //valida el campo del nombre
 function validarNombre () {
     let elemento = document.getElementById("nombre");
-    let reg = /^[a-z]+(?:\s[a-z]+)*$/i;
+    let reg = /^[a-zA-ZÁÉÍÓÚáéíóúñÑ\s]{2,20}$/;
     limpiarError(elemento);
     if (elemento.value == "") {
         error(elemento);
@@ -100,7 +100,7 @@ function validarNombre () {
 //valida el campo de los apellidos
 function validarApellidos () {
     let elemento = document.getElementById("apellidos");
-    let reg = /^[a-z]{2,25}$/i;
+    let reg = /^[a-zA-ZÁÉÍÓÚáéíóúñÑ\s]{2,25}$/;
     limpiarError(elemento);
     if (elemento.value == "") {
         error(elemento);

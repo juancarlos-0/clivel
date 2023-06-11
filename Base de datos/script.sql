@@ -84,6 +84,8 @@ CREATE TABLE Noticia (
 
 CREATE TABLE Juego (
     id_juego INT NOT NULL,
+    nombre VARCHAR(40) NOT NULL,
+    fechaLanzamiento VARCHAR(40) NOT NULL,
     PRIMARY KEY (id_juego)
 );
 
@@ -140,4 +142,83 @@ VALUES ('admin', 'admin', 'admin', 'admin', 'admin', '2020-01-01', NULL, '', 'ad
 ('patricia', 'password', 'Patricia', 'Delgado', 'patricia@example.com', '2007-05-17', NULL, '', 'normal', false, 'conectado', false),
 ('daniel', 'password', 'Daniel', 'Cruz', 'daniel@example.com', '2008-06-18', NULL, '', 'normal', false, 'conectado', false),
 ('marcos', 'password', 'Marcos', 'Méndez', 'marcos@example.com', '2009-07-19', NULL, '', 'normal', false, 'conectado', false),
-('luisa', 'password', 'Luisa', 'Peña', 'luisa@example.com', '2010-08-20', NULL, '', 'normal', false, 'conectado', false);
+('luisa', 'password', 'Luisa', 'Peña', 'luisa@example.com', '2010-08-20', NULL, '', 'normal', false, 'conectado', false),
+('johnsmith', 'password', 'John', 'Smith', 'johnsmith@example.com', '1990-01-01', NULL, '', 'normal', false, 'conectado', false),
+('emmawilson', 'password', 'Emma', 'Wilson', 'emmawilson@example.com', '1992-02-02', NULL, '', 'normal', false, 'conectado', false),
+('michaeltaylor', 'password', 'Michael', 'Taylor', 'michaeltaylor@example.com', '1993-03-03', NULL, '', 'normal', false, 'conectado', false),
+('sophiaroberts', 'password', 'Sophia', 'Roberts', 'sophiaroberts@example.com', '1995-04-04', NULL, '', 'normal', false, 'conectado', false),
+('williamthompson', 'password', 'William', 'Thompson', 'williamthompson@example.com', '1996-05-05', NULL, '', 'normal', false, 'conectado', false),
+('olivertaylor', 'password', 'Oliver', 'Taylor', 'olivertaylor@example.com', '1998-06-06', NULL, '', 'normal', false, 'conectado', false),
+('isabellawalker', 'password', 'Isabella', 'Walker', 'isabellawalker@example.com', '1999-07-07', NULL, '', 'normal', false, 'conectado', false),
+('jamesmitchell', 'password', 'James', 'Mitchell', 'jamesmitchell@example.com', '2001-08-08', NULL, '', 'normal', false, 'conectado', false),
+('ameliawhite', 'password', 'Amelia', 'White', 'ameliawhite@example.com', '2002-09-09', NULL, '', 'normal', false, 'conectado', false),
+('benjaminrodriguez', 'password', 'Benjamin', 'Rodriguez', 'benjaminrodriguez@example.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('lucasjohnson', 'password', 'Lucas', 'Johnson', 'lucasjohnson@example.com', '1990-01-01', NULL, '', 'normal', false, 'conectado', false),
+('victoriathomas', 'password', 'Victoria', 'Thomas', 'victoriathomas@example.com', '1992-02-02', NULL, '', 'normal', false, 'conectado', false),
+('ethanharris', 'password', 'Ethan', 'Harris', 'ethanharris@example.com', '1993-03-03', NULL, '', 'normal', false, 'conectado', false),
+('ameliamartin', 'password', 'Amelia', 'Martin', 'ameliamartin@example.com', '1995-04-04', NULL, '', 'normal', false, 'conectado', false),
+('olivermiller', 'password', 'Oliver', 'Miller', 'olivermiller@example.com', '1996-05-05', NULL, '', 'normal', false, 'conectado', false),
+('charlottesmith', 'password', 'Charlotte', 'Smith', 'charlottesmith@example.com', '1998-06-06', NULL, '', 'normal', false, 'conectado', false),
+('liammorgan', 'password', 'Liam', 'Morgan', 'liammorgan@example.com', '1999-07-07', NULL, '', 'normal', false, 'conectado', false),
+('ameliataylor', 'password', 'Amelia', 'Taylor', 'ameliataylor@example.com', '2001-08-08', NULL, '', 'normal', false, 'conectado', false),
+('danielrodriguez', 'password', 'Daniel', 'Rodriguez', 'danielrodriguez@example.com', '2002-09-09', NULL, '', 'normal', false, 'conectado', false),
+('harperwilson', 'password', 'Harper', 'Wilson', 'harperwilson@example.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario2', 'usuario2', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario3', 'usuario3', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario4', 'usuario4', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario5', 'usuario5', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario6', 'usuario6', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario7', 'usuario7', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario8', 'usuario8', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario9', 'usuario9', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario10', 'usuario10', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario1', 'usuario1', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false);
+
+INSERT INTO Juego (id_juego, nombre, fechaLanzamiento)
+VALUES
+   (3328, 'The Witcher 3: Wild Hunt', '2015-05-18'),
+   (3498, 'Grand Theft Auto V', '2013-09-17'),
+   (4062, 'BioShock Infinite', '2013-03-26'),
+   (5286, 'Tomb Raider (2013)', '2013-03-05');
+
+INSERT INTO Valoracion (id_valoracion, id_juego, id_usuario, comentario, opinion, fecha_valoracion)
+VALUES
+   (NULL, 3328, 2, 'Gran juego, me encantó la historia y los gráficos.', 'Excelente', '2023-06-08'),
+   (NULL, 3328, 3, 'Me gustó mucho, pero algunos aspectos podrían mejorar.', 'Bueno', '2023-06-09'),
+   (NULL, 3328, 4, 'No fue lo que esperaba, bastante aburrido.', 'Pasar', '2023-06-10'),
+   (NULL, 3328, 21, 'Me encantó, uno de mis juegos favoritos.', 'Excelente', '2023-06-01'),
+   (NULL, 3328, 22, 'Buenos gráficos y jugabilidad.', 'Bueno', '2023-06-02'),
+   (NULL, 3328, 23, 'No es mi tipo de juego, no me gustó.', 'Pasar', '2023-06-03');
+   
+
+
+INSERT INTO Valoracion (id_valoracion, id_juego, id_usuario, comentario, opinion, fecha_valoracion)
+VALUES
+   (NULL, 3498, 5, 'Uno de los mejores juegos de mundo abierto que he jugado.', 'Excelente', '2023-06-08'),
+   (NULL, 3498, 6, 'La historia es increíble, pero el modo online es aburrido.', 'Bueno', '2023-06-09'),
+   (NULL, 3498, 7, 'No es mi tipo de juego, no me gustó.', 'Pasar', '2023-06-10'),
+   (NULL, 3498, 24, 'Divertido y emocionante, lo recomiendo.', 'Excelente', '2023-06-01'),
+   (NULL, 3498, 25, 'El mundo abierto ofrece muchas posibilidades.', 'Bueno', '2023-06-02'),
+   (NULL, 3498, 26, 'No me gustó la violencia del juego.', 'Pasar', '2023-06-03');
+   
+
+
+INSERT INTO Valoracion (id_valoracion, id_juego, id_usuario, comentario, opinion, fecha_valoracion)
+VALUES
+   (NULL, 4062, 8, 'Una experiencia única, me encantó.', 'Excelente', '2023-06-08'),
+   (NULL, 4062, 9, 'Buena jugabilidad, pero la historia no me atrapó.', 'Bueno', '2023-06-09'),
+   (NULL, 4062, 10, 'No me gustó, no entendí la trama.', 'Pasar', '2023-06-10'),
+   (NULL, 4062, 27, 'Historia intrigante, me mantuvo enganchado.', 'Excelente', '2023-06-01'),
+   (NULL, 4062, 28, 'Excelentes gráficos, pero la jugabilidad no es tan buena.', 'Bueno', '2023-06-02'),
+   (NULL, 4062, 29, 'No entendí la trama, me confundió.', 'Pasar', '2023-06-03');
+   
+
+
+INSERT INTO Valoracion (id_valoracion, id_juego, id_usuario, comentario, opinion, fecha_valoracion)
+VALUES
+   (NULL, 5286, 11, 'El juego tiene buenos gráficos, pero la historia es débil.', 'Aceptable', '2023-06-08'),
+   (NULL, 5286, 12, 'Me gustó, pero esperaba más desafío.', 'Bueno', '2023-06-09'),
+   (NULL, 5286, 13, 'No me gustó la jugabilidad, no lo recomendaría.', 'Pasar', '2023-06-10'),
+   (NULL, 5286, 30, 'Buena historia y acción.', 'Aceptable', '2023-06-01'),
+   (NULL, 5286, 31, 'Gráficos impresionantes, pero se vuelve repetitivo.', 'Bueno', '2023-06-02'),
+   (NULL, 5286, 32, 'No me gustó la protagonista, no me identifiqué.', 'Pasar', '2023-06-03');

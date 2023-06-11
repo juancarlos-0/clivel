@@ -55,12 +55,14 @@ public class JuegoDAO {
     }
 
     // Método para añadir un id
-    public boolean agregarID(int id) {
+    public boolean agregarID(int id, String nombre, String fechaLanzamiento) {
         try {
             // Preparar una consulta para insertar el ID en la tabla juego
             PreparedStatement preSta = conexion.prepareStatement(
-                    "INSERT INTO juego (id_juego) VALUES (?)");
+                    "INSERT INTO juego (id_juego, nombre, fechaLanzamiento) VALUES (?, ?, ?)");
             preSta.setInt(1, id);
+            preSta.setString(2, nombre);
+            preSta.setString(3, fechaLanzamiento);
             preSta.executeUpdate();
 
             return true;

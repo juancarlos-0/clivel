@@ -114,6 +114,8 @@ body {
 
 /* ESTILOS DE LOS DATATABLES */
 
+/* tabla de los usuarios*/
+
 #tablaUsuarios_wrapper {
     background-color: #1e1e1e;
     color: #ffffff;
@@ -174,6 +176,130 @@ body {
     border-color: #ffffff;
 }
 
+/* tabla de los juegos */
+
+#tablaJuegos_wrapper {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+#tablaJuegos_wrapper .dataTables_length label,
+#tablaJuegos_wrapper .dataTables_filter label,
+#tablaJuegos_wrapper .dataTables_info,
+#tablaJuegos_wrapper .dataTables_paginate .paginate_button {
+    color: #ffffff;
+}
+
+#tablaJuegos thead th {
+    background-color: #2c2c2c;
+    border-color: #ffffff;
+    color: #ffffff; /* Color del texto del encabezado */
+}
+
+#tablaJuegos tbody td {
+    border-color: #ffffff;
+    color: #ffffff; /* Color del texto de las celdas */
+}
+
+#tablaJuegos tbody tr:nth-child(odd) {
+    background-color: #292929;
+}
+
+#tablaJuegos tbody tr:hover {
+    background-color: #3d3d3d;
+}
+
+#tablaJuegos_length label,
+#tablaJuegos_filter label,
+#tablaJuegos_paginate .pagination .page-item .page-link {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+#tablaJuegos_length label select,
+#tablaJuegos_filter label input[type="search"],
+#tablaJuegos_paginate .pagination .page-item .page-link {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+#tablaJuegos_paginate .pagination .page-item .page-link:hover,
+#tablaJuegos_paginate .pagination .page-item .page-link:focus {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+#tablaJuegos_paginate .pagination .page-item.active .page-link {
+    background-color: #3d3d3d;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+/* tabla de los comentarios */
+
+#tablaComentarios_wrapper {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+#tablaComentarios_wrapper .dataTables_length label,
+#tablaComentarios_wrapper .dataTables_filter label,
+#tablaComentarios_wrapper .dataTables_info,
+#tablaComentarios_wrapper .dataTables_paginate .paginate_button {
+    color: #ffffff;
+}
+
+#tablaComentarios thead th {
+    background-color: #2c2c2c;
+    border-color: #ffffff;
+    color: #ffffff; /* Color del texto del encabezado */
+}
+
+#tablaComentarios tbody td {
+    border-color: #ffffff;
+    color: #ffffff; /* Color del texto de las celdas */
+}
+
+#tablaComentarios tbody tr:nth-child(odd) {
+    background-color: #292929;
+}
+
+#tablaComentarios tbody tr:hover {
+    background-color: #3d3d3d;
+}
+
+#tablaComentarios_length label,
+#tablaComentarios_filter label,
+#tablaComentarios_paginate .pagination .page-item .page-link {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+#tablaComentarios_length label select,
+#tablaComentarios_filter label input[type="search"],
+#tablaComentarios_paginate .pagination .page-item .page-link {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+#tablaComentarios_paginate .pagination .page-item .page-link:hover,
+#tablaComentarios_paginate .pagination .page-item .page-link:focus {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+#tablaComentarios_paginate .pagination .page-item.active .page-link {
+    background-color: #3d3d3d;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
 /* ESTILO DEL SCROLL */
 
 body::-webkit-scrollbar {
@@ -200,12 +326,14 @@ body::-webkit-scrollbar-thumb:hover {
 
 .detalle {
     background-color: #f2f2f2;
+}
+
+.detalle td {
     width: 100%;
 }
 
 .detalle-container {
     text-align: center;
-    width: 100%;
 }
 
 .detalle-titulo {
@@ -222,6 +350,10 @@ body::-webkit-scrollbar-thumb:hover {
 .detalle-info {
     width: 100%;
     text-align: left;
+}
+
+.detalle-info p {
+    text-align: center;
 }
 
 /* ESTILO MODAL OSCURO */
@@ -246,6 +378,7 @@ body::-webkit-scrollbar-thumb:hover {
 .dark-modal .modal-body input[type="text"],
 .dark-modal .modal-body input[type="email"],
 .dark-modal .modal-body textarea,
+.dark-modal .modal-body select,
 .dark-modal .modal-body .btn-primary,
 .dark-modal .modal-body .btn-secondary {
     background-color: #555;
@@ -255,7 +388,8 @@ body::-webkit-scrollbar-thumb:hover {
 
 .dark-modal .modal-body input[type="text"]::placeholder,
 .dark-modal .modal-body input[type="email"]::placeholder,
-.dark-modal .modal-body textarea::placeholder {
+.dark-modal .modal-body textarea::placeholder,
+.dark-modal .modal-body select::placeholder{
     color: #aaa;
 }
 
