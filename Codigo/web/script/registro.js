@@ -62,7 +62,7 @@ function validarFecha() {
 //valida el campo de la contraseña
 function validarContra () {
     let elemento = document.getElementById("contrasenia");
-    let reg = /^[a-z0-9]{3,20}$/i;
+    let reg = /^[a-zA-Z0-9]{3,20}$/i;
     limpiarError(elemento);
     if (elemento.value == "") {
         error(elemento);

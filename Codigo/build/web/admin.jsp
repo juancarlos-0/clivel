@@ -56,9 +56,9 @@
                 <span>Comentarios</span>
             </button>
 
-            <button class="navButton" id="baneosOpciones">
-                <i class="bi bi-exclamation-triangle-fill"></i>
-                <span>Baneos</span>
+            <button class="navButton" id="preguntasFrecuentesOpciones">
+                <i class="bi bi-question-circle"></i>
+                <span>FAQ</span>
             </button>
         </div>
 
@@ -66,6 +66,7 @@
             <table id="tablaUsuarios" class="table table-striped" style="width: 100%;">
 
             </table>
+            <button type="button" class="btn btn-primary dark-modal" id="abrirModalAdiadirAdmin">Añadir admin</button>
 
             <table id="tablaJuegos" class="table table-striped" style="width: 100%;">
 
@@ -74,7 +75,17 @@
             <table id="tablaComentarios" class="table table-striped" style="width: 100%;">
 
             </table>
+
+            <table id="tablaPreguntasFrecuentes" class="table table-striped" style="width: 100%;">
+
+            </table>
+            <button type="button" class="btn btn-primary dark-modal" id="aniadirFAQBtn">Añadir FAQ</button>
         </div>
+
+        <!-- Datos del usuario -->
+
+        <div id="divUsuario" data-usuario="${sessionScope.datosUsuario.getUsuario()}"></div>
+
 
         <!-- Modal para editar el usuario -->
         <div class="modal fade dark-modal" id="editarUsuarioModal" tabindex="-1" aria-labelledby="editarUsuarioModalLabel" aria-hidden="true">
@@ -189,6 +200,115 @@
             </div>
         </div>
 
+        <!-- Modal de Edición de FAQ -->
+        <div class="modal fade dark-modal" id="modalEditarPregunta" tabindex="-1" aria-labelledby="modalEditarPreguntaLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalEditarPreguntaLabel">Editar FAQ</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="id_FAQ">ID</label>
+                            <input type="text" class="form-control" id="id_FAQ" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="pregunta">Pregunta</label>
+                            <textarea class="form-control" id="pregunta" rows="4" maxlength="150"></textarea>
+                        </div>
+                        <p id="errorPregunta" class="error-message text-danger"></p>
+                        <div class="form-group">
+                            <label for="respuesta">Respuesta</label>
+                            <textarea class="form-control" id="respuesta" rows="4" maxlength="600"></textarea>
+                        </div>
+                        <p id="errorRespuesta" class="error-message text-danger"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="editarPreguntaBtn" class="btn btn-primary">Guardar Cambios</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de añadir una FAQ -->
+        <div class="modal fade dark-modal" id="modalAniadirFAQ" tabindex="-1" aria-labelledby="modalAniadirFAQLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalAniadirFAQLabel">Añadir FAQ</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="pregunta">Pregunta</label>
+                            <textarea class="form-control" id="preguntaAniadir" rows="4" maxlength="150"></textarea>
+                        </div>
+                        <p id="errorPreguntaAniadir" class="error-message text-danger"></p>
+                        <div class="form-group">
+                            <label for="respuesta">Respuesta</label>
+                            <textarea class="form-control" id="respuestaAniadir" rows="4" maxlength="600"></textarea>
+                        </div>
+                        <p id="errorRespuestaAniadir" class="error-message text-danger"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="agregarFAQBtn" class="btn btn-primary">Agregar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de añadir admin -->
+        <div class="modal fade dark-modal" id="modalAniadirAdmin" tabindex="-1" aria-labelledby="modalAniadirAdminLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalAniadirAdminLabel">Añadir admin</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="usuarioAdmin">Usuario</label>
+                            <input type="text" class="form-control" id="usuarioAdmin">
+                        </div>
+                        <p id="errorUsuarioAdmin" class="error-message text-danger"></p>
+                        <div class="form-group">
+                            <label for="contraAdmin">Contraseña</label>
+                            <input type="text" class="form-control" id="contraAdmin">
+                        </div>
+                        <p id="errorContraAdmin" class="error-message text-danger"></p>
+                        <div class="form-group">
+                            <label for="nombreAdmin">Nombre</label>
+                            <input type="text" class="form-control" id="nombreAdmin">
+                        </div>
+                        <p id="errorNombreAdmin" class="error-message text-danger"></p>
+                        <div class="form-group">
+                            <label for="apellidosAdmin">Apellidos</label>
+                            <input type="text" class="form-control" id="apellidosAdmin">
+                        </div>
+                        <p id="errorApellidosAdmin" class="error-message text-danger"></p>
+                        <div class="form-group">
+                            <label for="correoAdmin">Email</label>
+                            <input type="text" class="form-control" id="correoAdmin">
+                        </div>
+                        <p id="errorCorreoAdmin" class="error-message text-danger"></p>
+                        <div class="form-group">
+                            <label for="fechaNacimientoAdmin" class="form-label">Fecha de nacimiento</label>
+                            <input type="date" class="form-control" 
+                                   id="fechaNacimiento" name="fechaNacimientoAdmin" min="1940-01-01" max="2008-12-31">
+                        </div>
+                        <p id="errorFechaNacimientoAdmin" class="error-message text-danger"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="aniadirNuevoAdmin" class="btn btn-primary">Añadir</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <!-- Modal de confirmacion de eliminar un usuario -->
         <div class="modal fade dark-modal" id="eliminarUsuarioModal" tabindex="-1" aria-labelledby="eliminarUsuarioModalLabel" aria-hidden="true">
@@ -228,7 +348,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Modal de confirmacion de eliminar todos los comentarios -->
 
         <div class="modal fade dark-modal" id="eliminarTodosLosComentarios" tabindex="-1" aria-labelledby="eliminarTodosLosComentariosLabel" aria-hidden="true">
@@ -243,6 +363,26 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" id="eliminarTodosLosComentariosBtn">Eliminar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de confirmacion de eliminar un FQA -->
+
+        <div class="modal fade dark-modal" id="eliminarFAQ" tabindex="-1" aria-labelledby="eliminarFAQLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="eliminarFAQLabel">Confirmar eliminación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Estás seguro de que desea borrar la FAQ?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="eliminarFAQBtn">Eliminar</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     </div>
                 </div>

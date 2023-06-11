@@ -300,6 +300,68 @@ body {
     border-color: #ffffff;
 }
 
+/* tabla de las preguntas frecuentes */
+
+#tablaPreguntasFrecuentes_wrapper {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+#tablaPreguntasFrecuentes_wrapper .dataTables_length label,
+#tablaPreguntasFrecuentes_wrapper .dataTables_filter label,
+#tablaPreguntasFrecuentes_wrapper .dataTables_info,
+#tablaPreguntasFrecuentes_wrapper .dataTables_paginate .paginate_button {
+    color: #ffffff;
+}
+
+#tablaPreguntasFrecuentes thead th {
+    background-color: #2c2c2c;
+    border-color: #ffffff;
+    color: #ffffff; /* Color del texto del encabezado */
+}
+
+#tablaPreguntasFrecuentes tbody td {
+    border-color: #ffffff;
+    color: #ffffff; /* Color del texto de las celdas */
+}
+
+#tablaPreguntasFrecuentes tbody tr:nth-child(odd) {
+    background-color: #292929;
+}
+
+#tablaPreguntasFrecuentes tbody tr:hover {
+    background-color: #3d3d3d;
+}
+
+#tablaPreguntasFrecuentes_length label,
+#tablaPreguntasFrecuentes_filter label,
+#tablaPreguntasFrecuentes_paginate .pagination .page-item .page-link {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+#tablaPreguntasFrecuentes_length label select,
+#tablaPreguntasFrecuentes_filter label input[type="search"],
+#tablaPreguntasFrecuentes_paginate .pagination .page-item .page-link {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+#tablaPreguntasFrecuentes_paginate .pagination .page-item .page-link:hover,
+#tablaPreguntasFrecuentes_paginate .pagination .page-item .page-link:focus {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+#tablaPreguntasFrecuentes_paginate .pagination .page-item.active .page-link {
+    background-color: #3d3d3d;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
 /* ESTILO DEL SCROLL */
 
 body::-webkit-scrollbar {
@@ -391,6 +453,35 @@ body::-webkit-scrollbar-thumb:hover {
 .dark-modal .modal-body textarea::placeholder,
 .dark-modal .modal-body select::placeholder{
     color: #aaa;
+}
+
+.dark-modal .modal-body input[type="date"] {
+    background-color: #555;
+    color: #fff;
+    border-color: #555;
+}
+
+.dark-modal .modal-body input[type="date"]::placeholder {
+    color: #aaa;
+}
+
+
+/* NO MOSTRAR EL BOTON DE AÑADIR UNA FAQ */
+#aniadirFAQBtn {
+    display: none;
+    margin: 10px auto;
+    background-color: #555;
+    border-color: #555;
+    color: #fff;
+}
+
+/* NO MOSTRAR EL BOTON DE AÑADIR ADMINS */
+#abrirModalAdiadirAdmin {
+    display: none;
+    margin: 10px auto;
+    background-color: #555;
+    border-color: #555;
+    color: #fff;
 }
 
 @media (max-width: 700px) {

@@ -47,14 +47,11 @@ CREATE TABLE Novedad (
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
 );
 
-CREATE TABLE Comunidad (
-    id_comunidad INT NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(40) NOT NULL,
-    descripcion VARCHAR(500) NOT NULL,
-    imagen BLOB,
-    id_usuario INT NOT NULL,
-    PRIMARY KEY (id_comunidad),
-    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
+CREATE TABLE FAQ (
+    id_FAQ INT NOT NULL AUTO_INCREMENT,
+    pregunta VARCHAR(150) NOT NULL,
+    respuesta VARCHAR(600) NOT NULL,
+    PRIMARY KEY (id_FAQ)
 );
 
 CREATE TABLE Mensaje (
@@ -72,15 +69,6 @@ CREATE TABLE Mensaje (
     FOREIGN KEY (id_usuario_receptor) REFERENCES Usuario(id_usuario)
 );
 
-CREATE TABLE Noticia (
-    id_noticia INT NOT NULL AUTO_INCREMENT,
-    titulo VARCHAR(40) NOT NULL,
-    descripcion VARCHAR(2000) NOT NULL,
-    imagen BLOB NULL,
-    id_usuario INT NOT NULL,
-    PRIMARY KEY (id_noticia),
-    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
-);
 
 CREATE TABLE Juego (
     id_juego INT NOT NULL,
@@ -163,16 +151,16 @@ VALUES ('admin', 'admin', 'admin', 'admin', 'admin', '2020-01-01', NULL, '', 'ad
 ('ameliataylor', 'password', 'Amelia', 'Taylor', 'ameliataylor@example.com', '2001-08-08', NULL, '', 'normal', false, 'conectado', false),
 ('danielrodriguez', 'password', 'Daniel', 'Rodriguez', 'danielrodriguez@example.com', '2002-09-09', NULL, '', 'normal', false, 'conectado', false),
 ('harperwilson', 'password', 'Harper', 'Wilson', 'harperwilson@example.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario2', 'usuario2', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario3', 'usuario3', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario4', 'usuario4', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario5', 'usuario5', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario6', 'usuario6', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario7', 'usuario7', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario8', 'usuario8', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario9', 'usuario9', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario10', 'usuario10', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario1', 'usuario1', 'usuario', 'usuario', 'usuario@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false);
+('usuario2', 'usuario2', 'usuario', 'usuario', 'usuario2@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario3', 'usuario3', 'usuario', 'usuario', 'usuario3@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario4', 'usuario4', 'usuario', 'usuario', 'usuario4@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario5', 'usuario5', 'usuario', 'usuario', 'usuario5@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario6', 'usuario6', 'usuario', 'usuario', 'usuario6@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario7', 'usuario7', 'usuario', 'usuario', 'usuario7@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario8', 'usuario8', 'usuario', 'usuario', 'usuario8@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario9', 'usuario9', 'usuario', 'usuario', 'usuario9@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario10', 'usuario10', 'usuario', 'usuario', 'usuario10@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
+('usuario1', 'usuario1', 'usuario', 'usuario', 'usuario1@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false);
 
 INSERT INTO Juego (id_juego, nombre, fechaLanzamiento)
 VALUES
@@ -222,3 +210,12 @@ VALUES
    (NULL, 5286, 30, 'Buena historia y acción.', 'Aceptable', '2023-06-01'),
    (NULL, 5286, 31, 'Gráficos impresionantes, pero se vuelve repetitivo.', 'Bueno', '2023-06-02'),
    (NULL, 5286, 32, 'No me gustó la protagonista, no me identifiqué.', 'Pasar', '2023-06-03');
+
+
+INSERT INTO FAQ (pregunta, respuesta) 
+VALUES 
+    ('¿Cómo puedo cambiar mi contraseña?', 'Para cambiar tu contraseña, pulsa en tu foto de perfil y pulsa en editar perfil, luego debes buscar el campo "Contraseña". Allí podrás ingresar una nueva contraseña y confirmar los cambios.'),
+    ('¿Cómo puedo agregar amigos?', 'En la pestaña de amigos, estando registrado podrás pulsar en un botón que tiene un icono de un más, luego le llegará una petición al usuario que deseas agregar y cuando te acepte sereis amigos y podréis hablar'),
+    ('¿Cuando llegará la pestaña de comunidades?', 'Estamos en desarrollo, es la seccion con la que queremos que clivel sea una página única por eso nos está llevando mucho tiempo el desarrollo, de momento podéis ver un concepto y probablemente llegue a finales de año o comienzos del siguiente.'),
+    ('¿Cómo puedo escribir un comentario sobre un juego?', 'Para ello debes ir a la seccón juegos, seleccionar en uno de ellos y cuando veas la información sobre ese juego tendrás que bajar y podrás ver un botón para añadir comentarios, solo está disponible para usuarios registrados.'),
+    ('¿Qué es la estrella en la página amigos?', 'La estrella simboliza los amigos favoritos, cuando pulses en la estrella que principalmente aparece vacía al lado de cada usuario podrás pulsar en la estrella principal para filtrar por amigos favoritos.');
