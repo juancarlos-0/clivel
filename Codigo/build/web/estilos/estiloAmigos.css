@@ -879,6 +879,23 @@ a {
     color: blue;
 }
 
+/* ESTILO DE LAS ESTRELLAS */
+
+.bi-star-fill {
+    color: #ffc107;
+}
+
+.bi-star {
+    color: #cccccc;
+}
+
+.estrellaActiva {
+    background-color: rgba(255, 223, 0, 0.3);
+    box-shadow: 0 0 12px 7px rgba(255, 223, 0, 0.3);
+}
+
+
+
 /* MEDIA PARA CUANDO SE REDUCE EL ANCHO */
 
 @media (max-width: 1150px) {

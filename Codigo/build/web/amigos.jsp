@@ -359,8 +359,7 @@
                                     </div>
                                     <div class="iconosContenedorD">
                                         <button type="button" class="btnIcono"
-                                                title="Filtrar favoritos"data-bs-toggle="modal" 
-                                                data-bs-target="#filtroFavoritos">
+                                                title="Filtrar favoritos" id="filtraFavoritos">
                                             <i class="bi bi-star"></i>
                                         </button>
                                     </div>

@@ -5,7 +5,12 @@
 
 let idUsuarioChat = 0;
 let listaAmigos = [];
+
 $(document).ready(function () {
+
+    // Variable de control para alternar entre favoritos y todos los usuarios
+    var mostrarFavoritos = false;
+
     var resultados = [];
 
     $('#nombre-amigo').keyup(function () {
@@ -191,16 +196,54 @@ $(document).ready(function () {
                 var spanUsuario = document.createElement("span");
                 spanUsuario.textContent = usuario.usuario;
 
+                var spanEstrella = document.createElement("span");
+
+                if (usuario.favorito) {
+                    spanEstrella.classList.add("estrella", "bi", "bi-star-fill");
+                } else {
+                    spanEstrella.classList.add("estrella", "bi", "bi-star");
+                }
+
                 contenedorUsuario.appendChild(imgUsuario);
                 contenedorUsuario.appendChild(spanUsuario);
 
                 listItem.appendChild(contenedorUsuario);
+                listItem.appendChild(spanEstrella);
                 button.appendChild(inputUsuario);
                 button.appendChild(listItem);
                 contenedorListaAmigos.appendChild(button);
+
+                // Evento para la estrella
+                spanEstrella.addEventListener("click", function (event) {
+                    event.stopPropagation();
+                    // Verificar si el usuario es favorito o no
+                    var esFavorito = usuario.favorito;
+
+                    // Realizar la solicitud AJAX para marcar/desmarcar como favorito
+                    $.ajax({
+                        url: "ajax/marcarFavorito.jsp",
+                        method: "POST",
+                        data: {
+                            idUsuario: usuario.id_usuario,
+                            idSesion: idSesion,
+                            favorito: !esFavorito // Invertir el estado de favorito
+                        },
+                        success: function (response) {
+                            // Actualizar el estado de la estrella
+                            usuario.favorito = !esFavorito;
+                            spanEstrella.classList.toggle("bi-star-fill");
+                            spanEstrella.classList.toggle("bi-star");
+                        },
+                        error: function (error) {
+                            console.error("Error al marcar/desmarcar como favorito:", error);
+                        }
+                    });
+                });
+
+
                 // Evento que mostrará el chat de ese amigo
                 button.addEventListener("click", function () {
-                    //Poner la imd y nombre del usuario
+                    //Poner la img y nombre del usuario
                     var contenedorInfoAmigoSeleccionado = $(".contenedorInfoAmigoSeleccionado");
                     contenedorInfoAmigoSeleccionado.empty();
 
@@ -233,19 +276,20 @@ $(document).ready(function () {
         }
     });
 
-    // Escuchar el evento de cambio en el campo de búsqueda
+    // Evento al buscador de amigos
     $("#buscar").on("keyup", function () {
         var textoBusqueda = $(this).val().toLowerCase();
 
         // Filtrar la lista de usuarios según el texto de búsqueda
         $.each(listaAmigos, function (index, amigo) {
             var nombreUsuario = amigo.usuario;
-            let botonDelUsuario = document.getElementById(amigo.usuario);
-            
-            if (nombreUsuario.includes(textoBusqueda)) {                
-                $(botonDelUsuario).show(); // Mostrar el usuario si coincide con la búsqueda
+            var botonDelUsuario = document.getElementById(amigo.usuario);
+
+            // Verificar si el usuario coincide con el texto de búsqueda y es favorito (si mostrarFavoritos está activo)
+            if ((!mostrarFavoritos || amigo.favorito) && nombreUsuario.includes(textoBusqueda)) {
+                $(botonDelUsuario).show(); // Mostrar el usuario si cumple con los criterios
             } else {
-                $(botonDelUsuario).hide(); // Ocultar el usuario si no coincide con la búsqueda
+                $(botonDelUsuario).hide(); // Ocultar el usuario si no cumple con los criterios
             }
         });
     });
@@ -298,6 +342,42 @@ $(document).ready(function () {
 
     });
 
+    // Evento click que filtra a los amigos favoritos
+    $("#filtraFavoritos").on("click", function () {
+        var textoBusqueda = $("#buscar").val().toLowerCase();
+
+        // Alternar el estado antes de filtrar la lista
+        mostrarFavoritos = !mostrarFavoritos;
+
+        // Filtrar la lista de usuarios según el texto de búsqueda y si son favoritos
+        $.each(listaAmigos, function (index, amigo) {
+            var nombreUsuario = amigo.usuario;
+            var botonDelUsuario = document.getElementById(amigo.usuario);
+
+            // Verificar si se deben mostrar solo los favoritos o todos los usuarios
+            if (mostrarFavoritos) {
+                // Verificar si el usuario es favorito y coincide con el texto de búsqueda
+                if (amigo.favorito && nombreUsuario.includes(textoBusqueda)) {
+                    $(botonDelUsuario).show(); // Mostrar el usuario si cumple con los criterios
+                } else {
+                    $(botonDelUsuario).hide(); // Ocultar el usuario si no cumple con los criterios
+                }
+            } else {
+                // Verificar si el usuario coincide con el texto de búsqueda
+                if (nombreUsuario.includes(textoBusqueda)) {
+                    $(botonDelUsuario).show(); // Mostrar el usuario si cumple con los criterios
+                } else {
+                    $(botonDelUsuario).hide(); // Ocultar el usuario si no cumple con los criterios
+                }
+            }
+        });
+
+        // Cambiar el color del botón de la estrella
+        $(this).toggleClass("estrellaActiva");
+    });
+
+
+
 });
 
 
@@ -313,8 +393,6 @@ function verificarNuevosMensajes() {
         success: function (data) {
             // Agregar nuevos mensajes al chat-body
             $('#chat-body').append(data);
-
-            // Establecer la posición del scroll en la parte inferior del chat-body solo si se agregaron nuevos mensajes
 
         }
     });

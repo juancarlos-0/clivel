@@ -26,6 +26,7 @@ public class Usuario {
     private boolean experto;
     private String estado;
     private boolean usuario_cambiado;
+    private boolean favorito;
 
     public Usuario() {
     }
@@ -161,8 +162,12 @@ public class Usuario {
         this.usuario_cambiado = usuario_cambiado;
     }
 
-   
-    
-    
-    
+    public boolean isFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(boolean favorito) {
+        this.favorito = favorito;
+    }
+       
 }

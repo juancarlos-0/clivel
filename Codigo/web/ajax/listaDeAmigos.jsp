@@ -16,7 +16,7 @@
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/clivel", "root", "");
 
         // Consulta para obtener los usuarios que son amigos del usuario de sesión
-        pstmt = conn.prepareStatement("SELECT u.* FROM usuario u JOIN amigos a ON u.id_usuario = a.id_usuario_amigo WHERE a.id_usuario = ?");
+        pstmt = conn.prepareStatement("SELECT u.*, a.favorito FROM usuario u JOIN amigos a ON u.id_usuario = a.id_usuario_amigo WHERE a.id_usuario = ?");
         pstmt.setInt(1, idSesion);
         rs = pstmt.executeQuery();
 
@@ -29,6 +29,7 @@
             usuario.setFoto(rs.getString("foto"));
             usuario.setApellidos(rs.getString("apellidos"));
             usuario.setDescripcion(rs.getString("descripcion"));
+            usuario.setFavorito(rs.getBoolean("favorito"));
             usuarios.add(usuario);
         }
 
