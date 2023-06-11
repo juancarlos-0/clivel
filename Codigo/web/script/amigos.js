@@ -156,125 +156,146 @@ $(document).ready(function () {
     var contenedorListaAmigos = document.getElementById("contenedorListaAmigos");
     var idSesion = $('#idUsuarioSesion').data('usuario-id');
 
-    // Realizar la solicitud AJAX para obtener la lista de amigos
-    $.ajax({
-        url: "ajax/listaDeAmigos.jsp",
-        type: "POST",
-        data: {idSesion: idSesion},
-        success: function (response) {
-            // Parsear la respuesta como JSON
-            listaAmigos = JSON.parse(response);
+    // Función para agregar un nuevo amigo a la lista
+    function agregarAmigo(usuario) {
+        var button = document.createElement("button");
+        button.type = "submit";
+        button.classList.add("list-group-item", "list-group-item-action", "border-0", "bg-transparent", "p-0");
+        button.name = "botonIrAChat";
+        button.id = usuario.usuario;
 
-            // Recorrer la lista de amigos y crear los elementos correspondientes
-            listaAmigos.forEach(function (usuario) {
-                var button = document.createElement("button");
-                button.type = "submit";
-                button.classList.add("list-group-item", "list-group-item-action", "border-0", "bg-transparent", "p-0");
-                button.name = "botonIrAChat";
-                button.id = usuario.usuario;
+        var inputUsuario = document.createElement("input");
+        inputUsuario.type = "text";
+        inputUsuario.style.display = "none";
+        inputUsuario.value = usuario.usuario;
+        inputUsuario.name = "nombre_usuario_chat";
 
-                var inputUsuario = document.createElement("input");
-                inputUsuario.type = "text";
-                inputUsuario.style.display = "none";
-                inputUsuario.value = usuario.usuario;
-                inputUsuario.name = "nombre_usuario_chat";
+        var listItem = document.createElement("li");
+        listItem.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+        listItem.id = "listaUsuarios";
 
-                var listItem = document.createElement("li");
-                listItem.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
-                listItem.id = "listaUsuarios";
+        var contenedorUsuario = document.createElement("div"); // Contenedor para la imagen y el span
+        contenedorUsuario.classList.add("d-flex", "align-items-center");
 
-                var contenedorUsuario = document.createElement("div"); // Contenedor para la imagen y el span
-                contenedorUsuario.classList.add("d-flex", "align-items-center");
+        var imgUsuario = document.createElement("img");
+        imgUsuario.src = usuario.foto != null ? usuario.foto : "img/usuario.png";
+        imgUsuario.alt = "imagen de usuario";
+        imgUsuario.classList.add("rounded-circle", "me-2", "tooltipUsuario");
+        imgUsuario.width = 49;
+        imgUsuario.height = 49;
 
-                var imgUsuario = document.createElement("img");
-                imgUsuario.src = usuario.foto != null ? usuario.foto : "img/usuario.png";
-                imgUsuario.alt = "imagen de usuario";
-                imgUsuario.classList.add("rounded-circle", "me-2", "tooltipUsuario");
-                imgUsuario.width = 49;
-                imgUsuario.height = 49;
+        var spanUsuario = document.createElement("span");
+        spanUsuario.textContent = usuario.usuario;
 
-                var spanUsuario = document.createElement("span");
-                spanUsuario.textContent = usuario.usuario;
+        var spanEstrella = document.createElement("span");
 
-                var spanEstrella = document.createElement("span");
-
-                if (usuario.favorito) {
-                    spanEstrella.classList.add("estrella", "bi", "bi-star-fill");
-                } else {
-                    spanEstrella.classList.add("estrella", "bi", "bi-star");
-                }
-
-                contenedorUsuario.appendChild(imgUsuario);
-                contenedorUsuario.appendChild(spanUsuario);
-
-                listItem.appendChild(contenedorUsuario);
-                listItem.appendChild(spanEstrella);
-                button.appendChild(inputUsuario);
-                button.appendChild(listItem);
-                contenedorListaAmigos.appendChild(button);
-
-                // Evento para la estrella
-                spanEstrella.addEventListener("click", function (event) {
-                    event.stopPropagation();
-                    // Verificar si el usuario es favorito o no
-                    var esFavorito = usuario.favorito;
-
-                    // Realizar la solicitud AJAX para marcar/desmarcar como favorito
-                    $.ajax({
-                        url: "ajax/marcarFavorito.jsp",
-                        method: "POST",
-                        data: {
-                            idUsuario: usuario.id_usuario,
-                            idSesion: idSesion,
-                            favorito: !esFavorito // Invertir el estado de favorito
-                        },
-                        success: function (response) {
-                            // Actualizar el estado de la estrella
-                            usuario.favorito = !esFavorito;
-                            spanEstrella.classList.toggle("bi-star-fill");
-                            spanEstrella.classList.toggle("bi-star");
-                        },
-                        error: function (error) {
-                            console.error("Error al marcar/desmarcar como favorito:", error);
-                        }
-                    });
-                });
-
-
-                // Evento que mostrará el chat de ese amigo
-                button.addEventListener("click", function () {
-                    //Poner la img y nombre del usuario
-                    var contenedorInfoAmigoSeleccionado = $(".contenedorInfoAmigoSeleccionado");
-                    contenedorInfoAmigoSeleccionado.empty();
-
-                    var imgUsuarioChat = $("<img>").attr("src", usuario.foto != null ? usuario.foto : "img/usuario.png")
-                            .attr("alt", "imagen de usuario")
-                            .addClass("rounded-circle me-2 tooltipUsuario")
-                            .attr("width", 49)
-                            .attr("height", 49);
-
-                    var spanUsuarioChat = $("<span>").text(usuario.usuario);
-
-                    contenedorInfoAmigoSeleccionado.append(imgUsuarioChat);
-                    contenedorInfoAmigoSeleccionado.append(spanUsuarioChat);
-                    idUsuarioChat = usuario.id_usuario;
-                    limpiarChat();
-                    $("#inputEnvioMensaje").prop("disabled", false);
-                    $("#flechaEnvioMensaje").prop("disabled", false);
-                    verificarNuevosMensajes();
-                    cargarMensajesAnteriores();
-
-                    // Llamar a la función verificarNuevosMensajes cada 5 segundos
-                    setInterval(verificarNuevosMensajes, 500);
-                });
-            });
-
-
-        },
-        error: function (xhr, status, error) {
-            console.log(error);
+        if (usuario.favorito) {
+            spanEstrella.classList.add("estrella", "bi", "bi-star-fill");
+        } else {
+            spanEstrella.classList.add("estrella", "bi", "bi-star");
         }
-    });
+
+        contenedorUsuario.appendChild(imgUsuario);
+        contenedorUsuario.appendChild(spanUsuario);
+
+        listItem.appendChild(contenedorUsuario);
+        listItem.appendChild(spanEstrella);
+        button.appendChild(inputUsuario);
+        button.appendChild(listItem);
+        contenedorListaAmigos.appendChild(button);
+
+        // Evento para la estrella
+        spanEstrella.addEventListener("click", function (event) {
+            event.stopPropagation();
+            // Verificar si el usuario es favorito o no
+            var esFavorito = usuario.favorito;
+
+            // Realizar la solicitud AJAX para marcar/desmarcar como favorito
+            $.ajax({
+                url: "ajax/marcarFavorito.jsp",
+                method: "POST",
+                data: {
+                    idUsuario: usuario.id_usuario,
+                    idSesion: idSesion,
+                    favorito: !esFavorito // Invertir el estado de favorito
+                },
+                success: function (response) {
+                    // Actualizar el estado de la estrella
+                    usuario.favorito = !esFavorito;
+                    spanEstrella.classList.toggle("bi-star-fill");
+                    spanEstrella.classList.toggle("bi-star");
+                },
+                error: function (error) {
+                    console.error("Error al marcar/desmarcar como favorito:", error);
+                }
+            });
+        });
+
+        // Evento que mostrará el chat de ese amigo
+        button.addEventListener("click", function () {
+            //Poner la img y nombre del usuario
+            var contenedorInfoAmigoSeleccionado = $(".contenedorInfoAmigoSeleccionado");
+            contenedorInfoAmigoSeleccionado.empty();
+
+            var imgUsuarioChat = $("<img>").attr("src", usuario.foto != null ? usuario.foto : "img/usuario.png")
+                    .attr("alt", "imagen de usuario")
+                    .addClass("rounded-circle me-2 tooltipUsuario")
+                    .attr("width", 49)
+                    .attr("height", 49);
+
+            var spanUsuarioChat = $("<span>").text(usuario.usuario);
+
+            contenedorInfoAmigoSeleccionado.append(imgUsuarioChat);
+            contenedorInfoAmigoSeleccionado.append(spanUsuarioChat);
+            idUsuarioChat = usuario.id_usuario;
+            limpiarChat();
+            $("#inputEnvioMensaje").prop("disabled", false);
+            $("#flechaEnvioMensaje").prop("disabled", false);
+            verificarNuevosMensajes();
+            cargarMensajesAnteriores();
+
+            // Llamar a la función verificarNuevosMensajes cada 5 segundos
+            setInterval(verificarNuevosMensajes, 5000);
+        });
+    }
+
+    // Función para obtener la lista de amigos actualizada
+    function obtenerListaAmigos() {
+        $.ajax({
+            url: "ajax/listaDeAmigos.jsp",
+            type: "POST",
+            data: {idSesion: idSesion},
+            success: function (response) {
+                // Parsear la respuesta como JSON
+                var nuevaListaAmigos = JSON.parse(response);
+
+                // Comparar la nueva lista de amigos con la lista anterior
+                nuevaListaAmigos.forEach(function (usuario) {
+                    var amigoExistente = listaAmigos.find(function (amigo) {
+                        return amigo.usuario === usuario.usuario;
+                    });
+
+                    if (!amigoExistente) {
+                        // Agregar nuevo amigo a la lista
+                        listaAmigos.push(usuario);
+
+                        // Crear elementos de la lista de amigos y agregarlos a la página
+                        agregarAmigo(usuario);
+                    }
+                });
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+            }
+        });
+    }
+
+    // Llamar a la función obtenerListaAmigos al cargar la página
+    obtenerListaAmigos();
+
+    // Llamar a la función obtenerListaAmigos cada 5 segundos para verificar cambios
+    setInterval(obtenerListaAmigos, 5000);
+
 
     // Evento al buscador de amigos
     $("#buscar").on("keyup", function () {

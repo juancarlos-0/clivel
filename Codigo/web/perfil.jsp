@@ -10,6 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Perfil</title>
         <link rel="stylesheet" href="bootstrap5/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -21,7 +22,7 @@
             <div class="container-fluid">
                 <div class="dropdown">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="${sessionScope.datosUsuario.getFoto() != null ? sessionScope.datosUsuario.getFoto() : 'img/usuario.png'}" alt="Imagen de perfil" width="50px" height="46px" class="rounded-circle"/>
+                        <img src="${sessionScope.datosUsuario.getFoto() != null && sessionScope.datosUsuario.getFoto() != '' ? sessionScope.datosUsuario.getFoto() : 'img/usuario.png'}" alt="Imagen de perfil" width="49px" height="49px" class="rounded-circle"/>
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -44,9 +45,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="juegos.jsp">Juegos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Noticias</a>
                         </li>
                     </ul>
                 </div>
@@ -87,7 +85,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="profile-name" class="form-label">Contraseña</label>
-                                    <input type="text" class="form-control" 
+                                    <input type="password" class="form-control" 
                                            id="contrasenia" name="contrasenia"
                                            value="${sessionScope.datosUsuario.getContrasenia()}">
                                 </div>
@@ -189,7 +187,7 @@
         </div>
 
         <footer>
-            <p><a href="#">Preguntas frecuentes</a> | <a href="#">Términos y condiciones</a> | <a href="#">Contáctanos</a></p>
+            <p><a href="faq">Preguntas frecuentes</a> | <a href="#">Términos y condiciones</a> | <a href="#">Contáctanos</a></p>
             <p>© 2023 Clivel - Todos los derechos reservados</p>
         </footer>
 

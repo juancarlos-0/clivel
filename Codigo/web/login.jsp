@@ -67,12 +67,12 @@
                                         </c:if>
                                     </label>
                                     <div class="input">
-                                        <input type="text" placeholder="Introduce tu contraseña" id="contrasenia" name="contrasenia" value="${contrasenia}">
+                                        <input type="password" placeholder="Introduce tu contraseña" id="contrasenia" name="contrasenia" value="${contrasenia}">
                                         <i class="bi bi-shield-lock"></i>
                                     </div>
                                 </div>
                                 <div class="text-end forgot-password">
-                                    <a href="">¿Olvidaste la contraseña?</a>
+                                    
                                 </div>
                                 <div class="form-signin">
                                     <button class="btn" id="inicia" name="inicia">Iniciar sesión</button>

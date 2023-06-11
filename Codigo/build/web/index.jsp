@@ -26,7 +26,7 @@
                     <link rel="stylesheet" href="estilos/estiloIconosImagen.css"/>
                     <div class="dropdown">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="${sessionScope.datosUsuario.getFoto() != null ? sessionScope.datosUsuario.getFoto() : 'img/usuario.png'}" alt="Imagen de perfil" width="50px" height="46px" class="rounded-circle"/>
+                            <img src="${sessionScope.datosUsuario.getFoto() != null && sessionScope.datosUsuario.getFoto() != '' ? sessionScope.datosUsuario.getFoto() : 'img/usuario.png'}" alt="Imagen de perfil" width="49px" height="49px" class="rounded-circle"/>
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -67,9 +67,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="juegos.jsp">Juegos</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Noticias</a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -103,23 +100,7 @@
         </section>
 
         <section class="comunidad py-5">
-            <h2 style="font-size: 80px">Lo que encontrarás</h2>
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6 order-md-2">
-                        <div class="img-comunidad">
-                            <img src="img/mujer-en-parada-autobus.png" alt="Sección de comunidad" class="img-fluid rounded shadow">
-                        </div>
-                    </div>
-                    <div class="col-md-6 order-md-1">
-                        <div class="comunidad-texto">
-                            <h2>Comunidades</h2>
-                            <p>En nuestra sección de comunidad, podrás compartir tus experiencias, hacer nuevos amigos y discutir tus juegos favoritos.</p>
-                            <a href="#" class="btn btn-primary">Ir a comunidades</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h2 style="font-size: 80px">Lo que encontrarás</h2>          
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 order-md-2">
@@ -130,10 +111,18 @@
                     <div class="col-md-6 order-md-1">
                         <div class="comunidad-texto">
                             <h2>Amigos</h2>
-                            <p>En Clivel también hay una sección en la que podrás 
+                            <p>En Clivel hay una sección en la que podrás 
                                 agregar a todos tus amigos y podrás hablar con ellos 
-                                mediante un chat.</p>
-                            <a href="#" class="btn btn-primary">Ir a los amigos</a>
+                                mediante un chat, además podrás agregarlos como favoritos y podrás filtrar tanto
+                                por amigos favoritos como buscando su usuario.</p>
+
+                            <c:if test="${not empty sessionScope.datosUsuario}">
+                                <a href="Preparar_amigos" class="btn btn-primary">Ir a los amigos</a>
+                            </c:if>
+                            <c:if test="${empty sessionScope.datosUsuario}">
+                                <a href="amigos.jsp" class="btn btn-primary">Ir a los amigos</a>
+                            </c:if>
+
                         </div>
                     </div>
                 </div>
@@ -148,10 +137,26 @@
                     <div class="col-md-6 order-md-1">
                         <div class="comunidad-texto">
                             <h2>Juegos</h2>
-                            <p>Podrás ver todos los juegos y una descripción de ellos,
-                                además podrás dar una valoración y ver la de los demas usuarios. Si superas
-                                las 20 valoraciones se te concedera el rango de experto.</p>
-                            <a href="#" class="btn btn-primary">Ver los juegos</a>
+                            <p>Podrás ver todos los juegos y filtrarlos para poder encontar tu juego favorito,
+                                además podrás dar una valoración y ver la de los demas usuarios. En las valoraciones podrás dar like
+                                a las demás valoraciones.</p>
+                            <a href="juegos.jsp" class="btn btn-primary">Ver los juegos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 order-md-2">
+                        <div class="img-comunidad">
+                            <img src="img/mujer-en-parada-autobus.png" alt="Sección de comunidad" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                        <div class="comunidad-texto">
+                            <h2>Comunidades</h2>
+                            <p>EN DESARROLLO. En nuestra sección de comunidad, podrás compartir tus experiencias, hacer nuevos amigos y discutir tus juegos favoritos. Actualmente podrás ver un concepto de lo que será la página</p>
+                            <a href="comunidades.jsp" class="btn btn-primary">Ir a comunidades</a>
                         </div>
                     </div>
                 </div>
@@ -166,8 +171,8 @@
                     <div class="col-md-6 order-md-1">
                         <div class="comunidad-texto">
                             <h2>Noticias</h2>
-                            <p>Podrás encontrar todas las noticias de la actualidad del
-                                mundo de los videojuegos para estar siempre imformado/a.</p>
+                            <p>PRÓXIMAMENTE. En clivel queremos que puedas estar al día de todas las noticias del mundo de los videojuegos, es por ello que 
+                                estamos desarrollando esta sección para poder traerla lo antes posible.</p>
                             <a href="#" class="btn btn-primary">Ver las noticias</a>
                         </div>
                     </div>
@@ -176,7 +181,7 @@
         </section>
 
         <footer>
-            <p><a href="#">Preguntas frecuentes</a> | <a href="#">Términos y condiciones</a> | <a href="#">Contáctanos</a></p>
+            <p><a href="faq">Preguntas frecuentes</a> | <a href="#">Términos y condiciones</a> | <a href="#">Contáctanos</a></p>
             <p>© 2023 Clivel - Todos los derechos reservados</p>
         </footer>
 

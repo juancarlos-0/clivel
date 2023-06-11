@@ -318,7 +318,7 @@
                         <div class="parteDeArriba">
                             <div class="pda_izquierda" <c:if test="${sessionScope.datosUsuario.getFondo() != null}">style="background-image: url(${sessionScope.datosUsuario.getFondo()}); background-size: cover;"</c:if>>
                                 <div class="imgYNombre">
-                                    <img src="${sessionScope.datosUsuario.getFoto() != null ? sessionScope.datosUsuario.getFoto() : 'img/usuario.png'}" alt="Imagen de perfil" width="49px" height="49px" class="rounded-circle"/>
+                                    <img src="${sessionScope.datosUsuario.getFoto() != null && sessionScope.datosUsuario.getFoto() != '' ? sessionScope.datosUsuario.getFoto() : 'img/usuario.png'}" alt="Imagen de perfil" width="49px" height="49px" class="rounded-circle"/>
                                 </div>
                             </div>
                             <div class="pda_derecha">
@@ -330,7 +330,6 @@
                                             <li><a href="index.jsp">Home</a></li>
                                             <li><a href="comunidades.jsp">Comunidad</a></li>
                                             <li><a href="juegos.jsp">Juegos</a></li>
-                                            <li><a href="#">Noticias</a></li>
                                             <li><a href="perfil.jsp">Editar perfil</a></li>
                                             <li><a href="Cerrar_sesion">Cerrar sesión</a></li>
                                         </ul>
@@ -530,9 +529,6 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="juegos.jsp">Juegos</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Noticias</a>
                                 </li>
                             </ul>
                         </div>
