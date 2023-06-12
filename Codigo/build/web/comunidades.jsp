@@ -27,6 +27,9 @@
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <c:if test="${sessionScope.datosUsuario.getRol() == 'admin'}">
+                            <li><a class="dropdown-item dropdown-item-icon" href="admin.jsp">Admin<i class="bi bi-incognito"></i></a></li>
+                        </c:if>
                         <li><a class="dropdown-item dropdown-item-icon" href="perfil.jsp">Editar usuario<i class="bi bi-person-circle"></i></a></li>
                         <li><a class="dropdown-item dropdown-item-icon" href="Cerrar_sesion">Cerrar sesión<i class="bi bi-box-arrow-right"></i></a></li>
                     </ul>
@@ -68,7 +71,8 @@
             </div>
         </nav>
 
-        <h1 class="text-center">Bienvenido/a a la comunidad de videojuegos</h1>
+        <h1 class="text-center">Próximamente: Comunidades</h1>
+        <p class="text-center"> Las comunidades todavía no están disponibles pero puedes ver un pequeño avance de como serán</p>
 
         <div class="contenedorSlider">
             <input type="radio" id="radio1" name="imagenSlide" hidden>
@@ -121,7 +125,7 @@
             <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
                 <div class="col">
                     <div class="card h-100">
-                        <img src="../Imagenes/comunidad/fornite.jpg" class="card-img-top" alt="...">
+                        <img src="img/comunidades/fornite.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Comunidad de Fortnite</h5>
                             <p class="card-text">Discute tus estrategias favoritas de Fortnite con otros jugadores
@@ -132,7 +136,7 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="../Imagenes/comunidad/lol.jpg" class="card-img-top" alt="...">
+                        <img src="img/comunidades/lol.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Comunidad de League of Legends</h5>
                             <p class="card-text">Conéctate con otros jugadores de League of Legends y comparte tus trucos y
@@ -143,7 +147,7 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="../Imagenes/comunidad/minecraft.jpg" class="card-img-top" alt="...">
+                        <img src="img/comunidades/minecraft.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Comunidad de Minecraft</h5>
                             <p class="card-text">Conéctate con otros jugadores de Minecraft y comparte tus construcciones y
@@ -154,7 +158,7 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="../Imagenes/comunidad/valorant.jpg" class="card-img-top" alt="...">
+                        <img src="img/comunidades/valorant.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Comunidad de Valorant</h5>
                             <p class="card-text">Conéctate con otros jugadores de Valorant y comparte tus tácticas y
@@ -165,7 +169,7 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="../Imagenes/comunidad/ow.webp" class="card-img-top" alt="...">
+                        <img src="img/comunidades/ow.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Comunidad de Overwatch</h5>
                             <p class="card-text">Conéctate con otros jugadores de Overwatch y comparte tus estrategias y
@@ -176,7 +180,7 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="../Imagenes/comunidad/wow.jpeg" class="card-img-top" alt="...">
+                        <img src="img/comunidades/wow.jpeg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Comunidad de World of Warcraft</h5>
                             <p class="card-text">Conéctate con otros jugadores de World of Warcraft y comparte tus aventuras
@@ -191,7 +195,7 @@
             <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
                 <div class="col">
                     <div class="card h-100">
-                        <img src="../Imagenes/comunidad/fornite.jpg" class="card-img-top" alt="...">
+                        <img src="img/comunidades/fornite.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Comunidad de Fortnite</h5>
                             <p class="card-text">Discute tus estrategias favoritas de Fortnite con otros jugadores
@@ -202,7 +206,7 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="../Imagenes/comunidad/lol.jpg" class="card-img-top" alt="...">
+                        <img src="img/comunidades/lol.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Comunidad de League of Legends</h5>
                             <p class="card-text">Conéctate con otros jugadores de League of Legends y comparte tus trucos y
@@ -213,7 +217,7 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="../Imagenes/comunidad/minecraft.jpg" class="card-img-top" alt="...">
+                        <img src="img/comunidades/minecraft.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Comunidad de Minecraft</h5>
                             <p class="card-text">Conéctate con otros jugadores de Minecraft y comparte tus construcciones y
@@ -224,7 +228,7 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="../Imagenes/comunidad/valorant.jpg" class="card-img-top" alt="...">
+                        <img src="img/comunidades/valorant.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Comunidad de Valorant</h5>
                             <p class="card-text">Conéctate con otros jugadores de Valorant y comparte tus tácticas y
@@ -235,7 +239,7 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="../Imagenes/comunidad/ow.webp" class="card-img-top" alt="...">
+                        <img src="img/comunidades/ow.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Comunidad de Overwatch</h5>
                             <p class="card-text">Conéctate con otros jugadores de Overwatch y comparte tus estrategias y
@@ -246,7 +250,7 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="../Imagenes/comunidad/wow.jpeg" class="card-img-top" alt="...">
+                        <img src="img/comunidades/wow.jpeg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Comunidad de World of Warcraft</h5>
                             <p class="card-text">Conéctate con otros jugadores de World of Warcraft y comparte tus aventuras

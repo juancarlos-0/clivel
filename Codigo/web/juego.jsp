@@ -36,6 +36,9 @@
                             </a>
 
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <c:if test="${sessionScope.datosUsuario.getRol() == 'admin'}">
+                                    <li><a class="dropdown-item dropdown-item-icon" href="admin.jsp">Admin<i class="bi bi-incognito"></i></a></li>
+                                </c:if>
                                 <li><a class="dropdown-item dropdown-item-icon" href="perfil.jsp">Editar usuario<i class="bi bi-person-circle"></i></a></li>
                                 <li><a class="dropdown-item dropdown-item-icon" href="Cerrar_sesion">Cerrar sesión<i class="bi bi-box-arrow-right"></i></a></li>
                             </ul>
@@ -391,7 +394,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Ventana modal confirma eliminar comentario -->
         <div id="modalConfirmarEliminarComentario" class="modal">
             <div class="modal-content">
@@ -399,7 +402,7 @@
                 <p class="text-center">Comentario eliminado con éxito</p>
             </div>
         </div>
-        
+
         <!-- Ventana modal confirma editar comentario -->
         <div id="modalConfirmarEditarComentario" class="modal">
             <div class="modal-content">
@@ -407,7 +410,7 @@
                 <p class="text-center">Comentario editado con éxito</p>
             </div>
         </div>
-        
+
         <!-- Ventana modal confirma añadir comentario -->
         <div id="modalConfirmarAniadirComentario" class="modal">
             <div class="modal-content">

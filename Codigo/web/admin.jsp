@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="datatables/datatables.min.css"/>
         <title>Admin</title>
     </head>
-    <c:if test="${sessionScope.datosUsuario.getFoto() == 'admin'}">
+    <c:if test="${sessionScope.datosUsuario.getRol() == 'admin'}">
         <body>
             <div class="navPrincipal">
                 <div>
@@ -400,7 +400,7 @@
             <script src="datatables/datatables.min.js"></script>  
         </body>
     </c:if>
-    <c:if test="${sessionScope.datosUsuario.getFoto() != 'admin'}">
+    <c:if test="${sessionScope.datosUsuario.getRol() != 'admin'}">
         <script>
            // Redireccionar a index.jsp
            window.location.href = "index.jsp";

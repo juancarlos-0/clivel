@@ -100,7 +100,7 @@ CREATE TABLE Like_ (
 );
 
 INSERT INTO Usuario (usuario, contrasenia, nombre, apellidos, correo, fecha_nacimiento, foto, descripcion, rol, experto, estado, usuario_cambiado)
-VALUES ('admin', 'admin', 'admin', 'admin', 'admin', '2020-01-01', NULL, '', 'admin', true, 'desconectado', false),
+VALUES ('admin', 'admin', 'admin', 'admin', 'admin', '2000-01-01', NULL, '', 'admin', true, 'desconectado', false),
 ('johndoe', 'password', 'John', 'Doe', 'johndoe@example.com', '1990-05-15', NULL, '', 'normal', false, 'conectado', false),
 ('janedoe', 'password', 'Jane', 'Doe', 'janedoe@example.com', '1992-08-22', NULL, '', 'normal', false, 'conectado', false),
 ('bobsmith', 'password', 'Bob', 'Smith', 'bobsmith@example.com', '1985-11-03', NULL, '', 'normal', false, 'conectado', false),
