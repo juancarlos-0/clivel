@@ -151,15 +151,6 @@ VALUES ('admin', 'admin', 'admin', 'admin', 'admin', '2000-01-01', NULL, '', 'ad
 ('ameliataylor', 'password', 'Amelia', 'Taylor', 'ameliataylor@example.com', '2001-08-08', NULL, '', 'normal', false, 'conectado', false),
 ('danielrodriguez', 'password', 'Daniel', 'Rodriguez', 'danielrodriguez@example.com', '2002-09-09', NULL, '', 'normal', false, 'conectado', false),
 ('harperwilson', 'password', 'Harper', 'Wilson', 'harperwilson@example.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario2', 'usuario2', 'usuario', 'usuario', 'usuario2@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario3', 'usuario3', 'usuario', 'usuario', 'usuario3@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario4', 'usuario4', 'usuario', 'usuario', 'usuario4@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario5', 'usuario5', 'usuario', 'usuario', 'usuario5@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario6', 'usuario6', 'usuario', 'usuario', 'usuario6@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario7', 'usuario7', 'usuario', 'usuario', 'usuario7@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario8', 'usuario8', 'usuario', 'usuario', 'usuario8@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario9', 'usuario9', 'usuario', 'usuario', 'usuario9@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
-('usuario10', 'usuario10', 'usuario', 'usuario', 'usuario10@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false),
 ('usuario1', 'usuario1', 'usuario', 'usuario', 'usuario1@usuario.com', '2004-10-10', NULL, '', 'normal', false, 'conectado', false);
 
 INSERT INTO Juego (id_juego, nombre, fechaLanzamiento)

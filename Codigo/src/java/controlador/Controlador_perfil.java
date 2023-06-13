@@ -123,10 +123,31 @@ public class Controlador_perfil extends HttpServlet {
 
                 //Obtener la imagen mediante una Part
                 Part parteFichero = request.getPart("foto-perfil");
+
+                //comprobar de que se haya introducido una imagen
+                if (parteFichero == null || parteFichero.getSize() == 0) {
+                    //Crear error
+                    request.setAttribute("errorInsertarFoto", "Debe introducir una foto para subirla.");
+                    //Redirigir nuevamente al login
+                    request.getRequestDispatcher("perfil.jsp").forward(request, response);
+                    return;
+                }
+                
                 //Obtener el nombre del fichero
                 String nombreFichero = parteFichero.getSubmittedFileName();
                 //Obtener la extensión del fichero
                 String extensionFichero = nombreFichero.substring(nombreFichero.lastIndexOf("."));
+                
+                //comprobar la extensión del fichero
+                if (!extensionFichero.toLowerCase().equals(".jpg") && !extensionFichero.toLowerCase().equals(".png")
+                        && !extensionFichero.toLowerCase().equals(".jpeg")) {
+                    //Crear error
+                    request.setAttribute("errorInsertarFoto", "Debe ser una imagen(jpg, png o jpeg).");
+                    //Redirigir nuevamente al login
+                    request.getRequestDispatcher("perfil.jsp").forward(request, response);
+                    return;
+                }
+                
                 //Crear ubicación para el fichero
                 String ubicacion = getServletContext().getRealPath("/img/usuarios/");
                 //Nombre único para el fichero con el nombre del usuario
@@ -153,17 +174,38 @@ public class Controlador_perfil extends HttpServlet {
                 request.getRequestDispatcher("perfil.jsp").forward(request, response);
                 return;
             }
-            
+
             if (botonCambiarFondo != null) {
                 // Obtener el usuario de la sesión
                 Usuario objetoSesion = (Usuario) session.getAttribute("datosUsuario");
 
                 //Obtener la imagen mediante una Part
                 Part parteFichero = request.getPart("fondo-perfil");
+                
+                //Comprobar de que se haya introducido un fondo
+                if (parteFichero == null || parteFichero.getSize() == 0) {
+                    //Crear error
+                    request.setAttribute("errorInsertarFondo", "Debe introducir un fondo para subirlo.");
+                    //Redirigir nuevamente al login
+                    request.getRequestDispatcher("perfil.jsp").forward(request, response);
+                    return;
+                }
+                
                 //Obtener el nombre del fichero
                 String nombreFichero = parteFichero.getSubmittedFileName();
                 //Obtener la extensión del fichero
                 String extensionFichero = nombreFichero.substring(nombreFichero.lastIndexOf("."));
+                
+                //comprobar la extensión del fichero
+                if (!extensionFichero.toLowerCase().equals(".jpg") && !extensionFichero.toLowerCase().equals(".png")
+                        && !extensionFichero.toLowerCase().equals(".jpeg")) {
+                    //Crear error
+                    request.setAttribute("errorInsertarFondo", "Debe ser una imagen(jpg, png o jpeg).");
+                    //Redirigir nuevamente al login
+                    request.getRequestDispatcher("perfil.jsp").forward(request, response);
+                    return;
+                }
+                
                 //Crear ubicación para el fichero
                 String ubicacion = getServletContext().getRealPath("/img/fondo/");
                 //Nombre único para el fichero con el nombre del usuario
@@ -176,7 +218,7 @@ public class Controlador_perfil extends HttpServlet {
                 if (Files.exists(rutaArchivo)) {
                     Files.delete(rutaArchivo);
                 }
-                
+
                 Files.copy(parteFichero.getInputStream(), Paths.get(ubicacion, nombreDeFichero));
                 //Guardar la ruta de la foto en la BD
                 UsuarioModeloDAO umDAO = new UsuarioModeloDAO();
