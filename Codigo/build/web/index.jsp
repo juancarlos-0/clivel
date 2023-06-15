@@ -42,10 +42,10 @@
                 </c:if>
                 <c:if test="${empty sessionScope.datosUsuario}">
                     <a class="navbar-brand" href="#">
-                        CLIVEL
+                        <p class="tituloClivel">Clivel</p>
                     </a>
                 </c:if>
-
+                    
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -103,7 +103,7 @@
         </section>
 
         <section class="comunidad py-5">
-            <h2 style="font-size: 80px">Lo que encontrarás</h2>          
+            <h2 class="h2loQueEncontraras">Lo que encontrarás</h2>          
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 order-md-2">

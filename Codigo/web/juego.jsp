@@ -38,7 +38,7 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <c:if test="${sessionScope.datosUsuario.getRol() == 'admin'}">
                                     <li><a class="dropdown-item dropdown-item-icon" href="admin.jsp">Admin<i class="bi bi-incognito"></i></a></li>
-                                </c:if>
+                                        </c:if>
                                 <li><a class="dropdown-item dropdown-item-icon" href="perfil.jsp">Editar usuario<i class="bi bi-person-circle"></i></a></li>
                                 <li><a class="dropdown-item dropdown-item-icon" href="Cerrar_sesion">Cerrar sesión<i class="bi bi-box-arrow-right"></i></a></li>
                             </ul>
@@ -47,7 +47,7 @@
                     </c:if>   
                     <c:if test="${empty sessionScope.datosUsuario}">
                         <a class="navbar-brand" href="#">
-                            CLIVEL
+                            <p class="tituloClivel">Clivel</p>
                         </a>
                     </c:if>
 

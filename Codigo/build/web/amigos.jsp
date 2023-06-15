@@ -330,9 +330,9 @@
                                             <li><a href="index.jsp">Home</a></li>
                                             <li><a href="comunidades.jsp">Comunidad</a></li>
                                             <li><a href="juegos.jsp">Juegos</a></li>
-                                            <c:if test="${sessionScope.datosUsuario.getRol() == 'admin'}">
+                                                <c:if test="${sessionScope.datosUsuario.getRol() == 'admin'}">
                                                 <li><a href="admin.jsp">Admin</a></li>
-                                            </c:if>
+                                                </c:if>
                                             <li><a href="perfil.jsp">Editar perfil</a></li>
                                             <li><a href="Cerrar_sesion">Cerrar sesión</a></li>
                                         </ul>
@@ -513,7 +513,7 @@
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="#">
-                            CLIVEL
+                            <p class="tituloClivel">Clivel</p>
                         </a>
 
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

@@ -7,6 +7,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : Juancarlos
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+/* Palabra Clivel en navbar*/
+.tituloClivel {
+    font-family: "Pacifico";
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
 /* Estilo del buscador */
 .formularioBusqueda {
     display: flex;

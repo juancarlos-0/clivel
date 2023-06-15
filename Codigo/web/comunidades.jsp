@@ -21,27 +21,27 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <c:if test="${not empty sessionScope.datosUsuario}">
-                        <div class="dropdown">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="${sessionScope.datosUsuario.getFoto() != null && sessionScope.datosUsuario.getFoto() != '' ? sessionScope.datosUsuario.getFoto() : 'img/usuario.png'}" alt="Imagen de perfil" width="49px" height="49px" class="rounded-circle"/>
-                    </a>
-
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <c:if test="${sessionScope.datosUsuario.getRol() == 'admin'}">
-                            <li><a class="dropdown-item dropdown-item-icon" href="admin.jsp">Admin<i class="bi bi-incognito"></i></a></li>
-                        </c:if>
-                        <li><a class="dropdown-item dropdown-item-icon" href="perfil.jsp">Editar usuario<i class="bi bi-person-circle"></i></a></li>
-                        <li><a class="dropdown-item dropdown-item-icon" href="Cerrar_sesion">Cerrar sesión<i class="bi bi-box-arrow-right"></i></a></li>
-                    </ul>
-
-                </div>
-                    </c:if>   
-                    <c:if test="${empty sessionScope.datosUsuario}">
-                        <a class="navbar-brand" href="#">
-                            CLIVEL
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="${sessionScope.datosUsuario.getFoto() != null && sessionScope.datosUsuario.getFoto() != '' ? sessionScope.datosUsuario.getFoto() : 'img/usuario.png'}" alt="Imagen de perfil" width="49px" height="49px" class="rounded-circle"/>
                         </a>
-                    </c:if>
-                
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <c:if test="${sessionScope.datosUsuario.getRol() == 'admin'}">
+                                <li><a class="dropdown-item dropdown-item-icon" href="admin.jsp">Admin<i class="bi bi-incognito"></i></a></li>
+                                    </c:if>
+                            <li><a class="dropdown-item dropdown-item-icon" href="perfil.jsp">Editar usuario<i class="bi bi-person-circle"></i></a></li>
+                            <li><a class="dropdown-item dropdown-item-icon" href="Cerrar_sesion">Cerrar sesión<i class="bi bi-box-arrow-right"></i></a></li>
+                        </ul>
+
+                    </div>
+                </c:if>   
+                <c:if test="${empty sessionScope.datosUsuario}">
+                    <a class="navbar-brand" href="#">
+                        <p class="tituloClivel">Clivel</p>
+                    </a>
+                </c:if>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

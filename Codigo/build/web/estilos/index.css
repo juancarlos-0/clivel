@@ -8,11 +8,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 /** Aplicar estilo de letra a la página **/
 
 body {
-    font-family: "Abril Fatface";
+    font-family: "Abril Fatface", "Verdana";
+}
+
+/* Palabra Clivel en navbar*/
+.tituloClivel {
+    font-family: "Pacifico";
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 /** Sección de bienvenida **/
@@ -71,6 +80,11 @@ body {
 .acerca-de .texto-mini {
     font-size: 16px;
 }
+
+.h2loQueEncontraras {
+    font-size: 80px;
+}
+
 
 /** Sección de cartas (lo que habrá en la página) **/
 
@@ -241,5 +255,13 @@ footer a:hover {
   p {
     font-size: 1em;
   }
+  
+  h2 {
+      font-size: 60px;
+  }
+  
+  .h2loQueEncontraras {
+    font-size: 60px;
+}
 }
 
