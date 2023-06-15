@@ -1,1 +1,0 @@
-En la ruta de cada página indica de cual página es el mockup.
